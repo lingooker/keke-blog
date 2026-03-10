@@ -16,10 +16,10 @@ const fs = require('fs');
 const path = require('path');
 
 // 文件路径
-const BLOG_DIR = __dirname;
-const REPORTS_DIR = path.join(__dirname, '../autonomous-learning/reports');
-const LEARNINGS_DIR = path.join(__dirname, '../.learnings');
-const MEMORY_DIR = path.join(__dirname, '../memory');
+const BLOG_DIR = path.join(__dirname, '..');
+const REPORTS_DIR = path.join(__dirname, '../../autonomous-learning/reports');
+const LEARNINGS_DIR = path.join(__dirname, '../../.learnings');
+const MEMORY_DIR = path.join(__dirname, '../../memory');
 
 // 获取当前日期
 function getToday() {
@@ -50,7 +50,7 @@ function updateDailyPage() {
     }
 
     // 读取模板
-    let dailyHtml = safeRead(path.join(BLOG_DIR, 'daily.html'));
+    let dailyHtml = safeRead(path.join(BLOG_DIR, 'pages/daily.html'));
 
     if (!dailyHtml) {
         console.error('无法读取 daily.html 模板');
@@ -81,7 +81,7 @@ function updateDailyPage() {
         `<!-- DAILY_CONTENT -->${contentSection}<!-- END_DAILY_CONTENT -->`);
 
     // 保存
-    fs.writeFileSync(path.join(BLOG_DIR, 'daily.html'), dailyHtml, 'utf-8');
+    fs.writeFileSync(path.join(BLOG_DIR, 'pages/daily.html'), dailyHtml, 'utf-8');
     console.log('✅ daily.html 已更新');
 }
 
@@ -96,7 +96,7 @@ function updateLearningsPage() {
     }
 
     // 读取模板
-    let learningsHtml = safeRead(path.join(BLOG_DIR, 'learnings.html'));
+    let learningsHtml = safeRead(path.join(BLOG_DIR, 'pages/learnings.html'));
 
     if (!learningsHtml) {
         console.error('无法读取 learnings.html 模板');
@@ -127,7 +127,7 @@ function updateLearningsPage() {
         `<!-- LEARNINGS_CONTENT -->${contentSection}<!-- END_LEARNINGS_CONTENT -->`);
 
     // 保存
-    fs.writeFileSync(path.join(BLOG_DIR, 'learnings.html'), learningsHtml, 'utf-8');
+    fs.writeFileSync(path.join(BLOG_DIR, 'pages/learnings.html'), learningsHtml, 'utf-8');
     console.log('✅ learnings.html 已更新');
 }
 
