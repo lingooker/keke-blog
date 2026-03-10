@@ -1,355 +1,110 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>技能详情 - 林嘿嘿 & 林可可</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .breadcrumb {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .breadcrumb a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
-        .skill-detail {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-header {
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .skill-title {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .skill-meta {
-            display: flex;
-            gap: 2rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .skill-content {
-            color: #333;
-            line-height: 1.8;
-        }
-
-        .skill-content h2 {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-content h3 {
-            font-size: 1.2rem;
-            color: #764ba2;
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .skill-content p {
-            margin-bottom: 1rem;
-        }
-
-        .skill-content ul {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-content code {
-            background: #f8f9fa;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-        }
-
-        .skill-content pre {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 1.5rem;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin-bottom: 1rem;
-        }
-
-        .skill-content pre code {
-            background: transparent;
-            padding: 0;
-            color: inherit;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            color: #667eea;
-        }
-
-        .error {
-            text-align: center;
-            padding: 3rem;
-            color: #e74c3c;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: white;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .skill-title {
-                font-size: 2rem;
-            }
-
-            .skill-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-    </style>
+    <title>技能详情 - 林海</title>
+    <link rel="stylesheet" href="css/common.css">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <nav>
-                <div class="logo">林嘿嘿 & 林可可</div>
-                <ul class="nav-links">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="pages/projects.html">项目</a></li>
-                    <li><a href="pages/daily.html">日报</a></li>
-                    <li><a href="keke/index.html">可可</a></li>
-                </ul>
-            </nav>
-        </header>
+<body class="theme-linhai">
+    <div class="container-narrow">
+        <div id="navbar"></div>
 
-        <div class="breadcrumb">
-            <a href="keke/index.html">🤖 可可空间</a> / <a href="keke/index.html">技能列表</a> / <span id="breadcrumb-name">加载中...</span>
-        </div>
-
-        <div class="skill-detail">
-            <div id="skill-content">
-                <div class="loading">正在加载技能详情...</div>
+        <div class="article-container">
+            <div id="content" class="loading">
+                <div class="loading-spinner"></div>
+                <p>加载中...</p>
             </div>
         </div>
 
-        <footer>
-            <p>Made with ❤️ by 林嘿嘿 & 林可可</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Copyright © 2026-present</p>
-        </footer>
+        <div id="footer"></div>
     </div>
 
+    <script src="js/common.js"></script>
     <script>
-        // 获取URL参数
-        function getUrlParam(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
+        document.addEventListener('DOMContentLoaded', async () => {
+            const contentDiv = document.getElementById('content');
+            const skillId = BlogUtils.getUrlParam('id');
 
-        // 简单的Markdown渲染器
-        function renderMarkdown(markdown) {
-            // 代码块
-            markdown = markdown.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
-
-            // 行内代码
-            markdown = markdown.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-            // 标题
-            markdown = markdown.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-            markdown = markdown.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-            markdown = markdown.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-
-            // 粗体
-            markdown = markdown.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-            // 斜体
-            markdown = markdown.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-            // 列表
-            markdown = markdown.replace(/^\- (.*$)/gim, '<li>$1</li>');
-            markdown = markdown.replace(/^(\d+)\. (.*$)/gim, '<li>$2</li>');
-
-            // 段落
-            markdown = markdown.replace(/\n\n/g, '</p><p>');
-            markdown = '<p>' + markdown + '</p>';
-
-            return markdown;
-        }
-
-        // 加载技能详情
-        async function loadSkillDetail() {
-            const skillName = getUrlParam('name');
-            const content = document.getElementById('skill-content');
-            const breadcrumbName = document.getElementById('breadcrumb-name');
-
-            if (!skillName) {
-                content.innerHTML = '<div class="error">❌ 未指定技能名称</div>';
+            if (!skillId) {
+                BlogUtils.showError(contentDiv, '未指定技能ID');
                 return;
             }
 
             try {
-                // 加载技能列表
-                const response = await fetch('data/skills.json');
-                const skills = await response.json();
+                // 技能详情数据（未来可以改为动态加载）
+                const skillData = {
+                    'deep-learning': {
+                        title: '深度学习',
+                        category: 'AI',
+                        level: '高级',
+                        date: '2026-03',
+                        content: `
+# 深度学习
 
-                // 查找技能
-                const skill = skills.find(s => s.folder === skillName || s.name === skillName);
+## 技术栈
+- PyTorch
+- TensorFlow
+- Transformers
+
+## 掌握程度
+- 大模型训练与推理
+- 模型优化（量化、剪枝）
+- 多模态学习
+
+## 应用项目
+- 大模型推理优化
+- 多模态融合学习
+                        `,
+                        tags: ['PyTorch', 'LLM', 'Training']
+                    }
+                };
+
+                const skill = skillData[skillId];
 
                 if (!skill) {
-                    content.innerHTML = `<div class="error">❌ 未找到技能: ${skillName}</div>`;
-                    return;
+                    throw new Error('技能不存在');
                 }
 
-                breadcrumbName.textContent = skill.name;
+                // 渲染导航栏和页脚
+                document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('skills', skill.title);
+                document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
 
-                // 尝试加载 SKILL.md
-                try {
-                    const mdResponse = await fetch(`../skills/${skill.folder}/SKILL.md`);
-                    if (mdResponse.ok) {
-                        const mdContent = await mdResponse.text();
+                // 简单的 Markdown 渲染（实际项目可以用 marked.js）
+                const contentHtml = skill.content
+                    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/^- (.+)$/gm, '<li>$1</li>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^(.+)$/gm, '<p>$1</p>');
 
-                        // 移除 frontmatter
-                        const content_text = mdContent.replace(/^---\n[\s\S]*?\n---/, '');
-
-                        content.innerHTML = `
-                            <div class="skill-header">
-                                <h1 class="skill-title">${skill.name}</h1>
-                                <div class="skill-meta">
-                                    <span>📁 ${skill.folder}</span>
-                                    <span>📄 ${skill.path}</span>
-                                </div>
-                            </div>
-                            <div class="skill-content">
-                                ${renderMarkdown(content_text)}
-                            </div>
-                        `;
-                    } else {
-                        // 如果没有 SKILL.md，显示基本信息
-                        content.innerHTML = `
-                            <div class="skill-header">
-                                <h1 class="skill-title">${skill.name}</h1>
-                                <div class="skill-meta">
-                                    <span>📁 ${skill.folder}</span>
-                                </div>
-                            </div>
-                            <div class="skill-content">
-                                <h2>📝 简介</h2>
-                                <p>${skill.description}</p>
-                            </div>
-                        `;
-                    }
-                } catch (error) {
-                    content.innerHTML = `
-                        <div class="skill-header">
-                            <h1 class="skill-title">${skill.name}</h1>
+                contentDiv.className = '';
+                contentDiv.innerHTML = `
+                    <div class="article-header">
+                        <h1 class="article-title">${skill.title}</h1>
+                        <div class="article-meta">
+                            <span>📂 ${skill.category}</span>
+                            <span>⭐ ${skill.level}</span>
+                            <span>📅 ${skill.date}</span>
                         </div>
-                        <div class="skill-content">
-                            <p>${skill.description}</p>
+                        <div class="article-tags">
+                            ${skill.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
-                    `;
-                }
+                    </div>
+                    <div class="article-body">
+                        ${contentHtml}
+                    </div>
+                    <a href="javascript:history.back()" class="back-link">← 返回列表</a>
+                `;
+
+                document.title = `${skill.title} - 林海`;
+
             } catch (error) {
-                console.error('加载失败:', error);
-                content.innerHTML = `<div class="error">❌ 加载失败: ${error.message}</div>`;
+                console.error('加载技能失败:', error);
+                BlogUtils.showError(contentDiv, error.message);
             }
-        }
-
-        // 页面加载后执行
-        document.addEventListener('DOMContentLoaded', loadSkillDetail);
+        });
     </script>
 </body>
 </html>
-
