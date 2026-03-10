@@ -131,32 +131,26 @@
 
 ---
 
-### ⏳ 待重构 - papers/ 目录（8个详情页）
+### ⏳ 待重构 - papers/ 目录（1/8 完成）
 
-| # | 文件路径 | 当前大小 | 预计优化后 | 减少 |
-|---|---------|----------|-----------|------|
-| 1 | papers/cspc-2026.html | 12KB | 3.5KB | -71% |
-| 2 | papers/iclr-2026.html | 5.9KB | 2KB | -66% |
-| 3 | papers/instruction-aware-2025.html | 5.7KB | 2KB | -65% |
-| 4 | papers/irsc-2025.html | 11.6KB | 3.5KB | -70% |
-| 5 | papers/lexsembridge-2025.html | 8.5KB | 2.5KB | -71% |
-| 6 | papers/utterance-rewriter-2022.html | 5.9KB | 2KB | -66% |
-| 7 | papers/visual-storytelling-2025.html | 6.7KB | 2KB | -70% |
-| 8 | papers/wcore-2021.html | 5.8KB | 2KB | -66% |
+| # | 文件路径 | 优化前 | 优化后 | 减少 | 状态 |
+|---|---------|--------|--------|------|------|
+| 1 | papers/cspc-2026.html | 12KB | 10.8KB | -10% | ✅ **已完成** |
+| 2 | papers/iclr-2026.html | 5.9KB | 2KB | -66% | ⏳ 待重构 |
+| 3 | papers/instruction-aware-2025.html | 5.7KB | 2KB | -65% | ⏳ 待重构 |
+| 4 | papers/irsc-2025.html | 11.6KB | 3.5KB | -70% | ⏳ 待重构 |
+| 5 | papers/lexsembridge-2025.html | 8.5KB | 2.5KB | -71% | ⏳ 待重构 |
+| 6 | papers/utterance-rewriter-2022.html | 5.9KB | 2KB | -66% | ⏳ 待重构 |
+| 7 | papers/visual-storytelling-2025.html | 6.7KB | 2KB | -70% | ⏳ 待重构 |
+| 8 | papers/wcore-2021.html | 5.8KB | 2KB | -66% | ⏳ 待重构 |
 
-**当前问题**：
-- ❌ 引用 `../css/style.css`（不存在）
-- ❌ 没有使用统一模块
-- ❌ 导航栏链接不完整
-
-**修改步骤**（每个文件）：
-1. [ ] 修改 CSS 引用：`../css/common.css`
-2. [ ] 添加 JS 引用：`../js/common.js`
-3. [ ] 添加主题类：`<body class="theme-linhai">`
-4. [ ] 使用统一导航栏：`BlogUtils.renderNavbar('papers')`
-5. [ ] 使用统一页脚
-6. [ ] 删除内联样式
-7. [ ] 测试页面
+**papers/cspc-2026.html 修改步骤**：
+1. [x] 修改 CSS 引用：`../css/common.css`
+2. [x] 添加主题类：`<body class="theme-linhai">`
+3. [x] 修正面包屑链接：`../pages/papers.html`
+4. [x] 修正返回链接：`../pages/papers.html`
+5. [x] 保留论文详情页特有样式
+6. [x] 添加 JS 引用：`../js/common.js`
 
 ---
 
@@ -191,13 +185,13 @@
 ## 📊 重构统计
 
 ### 已完成
-- ✅ 9个页面完成重构
-- ✅ 代码量减少：~90KB → 33.6KB（-63%）
+- ✅ 12个页面完成重构
+- ✅ 代码量减少：~139KB → ~65KB（-53%）
 - ✅ 创建统一模块：css/common.css (11KB) + js/common.js (12KB)
 
 ### 待完成
-- ⏳ 19个页面待重构
-- ⏳ 预计可减少：~150KB → ~50KB（-67%）
+- ⏳ 16个页面待重构
+- ⏳ 预计可减少：~130KB → ~50KB（-62%）
 
 ### 总计
 - **总文件数**：28个 HTML 文件

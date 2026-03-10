@@ -1,147 +1,29 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSPC: 中文句子改写数据集与评估 - 林海</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="../index.html">首页</a> /
-            <a href="../papers.html">论文</a> /
-            <span>CSPC 2026</span>
-        </nav>
-
-        <article class="paper-detail-page">
-            <header class="paper-header">
-                <div class="paper-badge">ICASSP 2026</div>
-                <h1>CSPC: A High-Quality Dataset and Comprehensive Evaluation Metric for Chinese Sentence Paraphrasing</h1>
-                <div class="paper-authors">
-                    <strong>作者：</strong>Hai Lin, Zixuan Xiong, Shaoxiong Zhan, Yangning Li, Hai-Tao Zheng, Yue Yu, Hong-Gee Kim, Ying Yang
-                </div>
-                <div class="paper-tags">
-                    <span class="tag">中文句子改写</span>
-                    <span class="tag">数据集</span>
-                    <span class="tag">评估指标</span>
-                    <span class="tag">ICASSP 2026</span>
-                </div>
-            </header>
-
-            <section class="paper-section">
-                <h2>📖 研究背景</h2>
-                <p>中文句子改写（Paraphrasing）是自然语言处理领域的重要任务，旨在保持原句语义的前提下，用不同的表达方式重新组织句子。该技术在对话系统、文本摘要、数据增强等多个下游任务中具有广泛应用。</p>
-                <p>然而，现有研究面临两大挑战：</p>
-                <ul>
-                    <li><strong>缺乏高质量数据集</strong>：现有中文改写数据集规模小、质量参差不齐，难以满足深度学习模型训练需求</li>
-                    <li><strong>评估指标不完善</strong>：缺乏综合评估指标，无法全面衡量改写质量的多维度特性</li>
-                </ul>
-            </section>
-
-            <section class="paper-section">
-                <h2>🎯 主要贡献</h2>
-                <div class="contribution-list">
-                    <div class="contribution-item">
-                        <div class="contribution-number">1</div>
-                        <div class="contribution-content">
-                            <h3>构建大规模高质量中文改写数据集 CSPC</h3>
-                            <p>数据集包含多领域的中文句子对，经过严格的质量控制和人工标注，确保改写句子的语义一致性和表达多样性。</p>
-                        </div>
-                    </div>
-                    <div class="contribution-item">
-                        <div class="contribution-number">2</div>
-                        <div class="contribution-content">
-                            <h3>提出综合评估指标框架</h3>
-                            <p>评估指标覆盖多个维度：</p>
-                            <ul>
-                                <li><strong>语义保持</strong>：确保改写后语义不变</li>
-                                <li><strong>流畅性</strong>：保证改写句子自然流畅</li>
-                                <li><strong>多样性</strong>：衡量改写的表达丰富度</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="contribution-item">
-                        <div class="contribution-number">3</div>
-                        <div class="contribution-content">
-                            <h3>实验验证与基准测试</h3>
-                            <p>在多个基准数据集上进行实验，验证了CSPC数据集和评估指标的有效性，为后续研究提供了可靠的评估工具。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="paper-section">
-                <h2>🔧 技术方案</h2>
-                
-                <h3>数据集构建流程</h3>
-                <div class="tech-flow">
-                    <div class="flow-step">
-                        <div class="step-number">Step 1</div>
-                        <div class="step-content">
-                            <h4>多源数据采集</h4>
-                            <p>从新闻、小说、对话等多个领域收集原始句子</p>
-                        </div>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">Step 2</div>
-                        <div class="step-content">
-                            <h4>模型辅助改写</h4>
-                            <p>利用预训练大模型生成候选改写句子</p>
-                        </div>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">Step 3</div>
-                        <div class="step-content">
-                            <h4>人工质量审核</h4>
-                            <p>专业标注人员对改写质量进行多轮审核</p>
-                        </div>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">Step 4</div>
-                        <div class="step-content">
-                            <h4>数据清洗与标准化</h4>
-                            <p>去除低质量样本，统一数据格式</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>评估指标架构</h3>
-                <p>采用<strong>混合架构</strong>，结合预训练模型和规则方法：</p>
-                <ul>
-                    <li><strong>预训练模型</strong>：基于BERT等模型提取语义特征，计算语义相似度</li>
-                    <li><strong>规则方法</strong>：基于语言学规则，评估句法结构和词汇多样性</li>
-                    <li><strong>融合策略</strong>：加权融合多个评估维度，得到综合评分</li>
-                </ul>
-            </section>
-
-            <section class="paper-section">
-                <h2>📊 实验结果</h2>
-                <p>实验结果表明：</p>
-                <ul>
-                    <li>CSPC数据集在多个下游任务中显著提升模型性能</li>
-                    <li>提出的评估指标与人工评价高度相关（相关系数 > 0.85）</li>
-                    <li>综合评估指标优于现有单一指标方法</li>
-                </ul>
-            </section>
-
-            <section class="paper-section">
-                <h2>🔗 相关资源</h2>
-                <div class="resource-links">
-                    <a href="#" class="resource-link">📄 论文PDF</a>
-                    <a href="#" class="resource-link">💾 数据集下载</a>
-                    <a href="#" class="resource-link">💻 代码仓库</a>
-                    <a href="#" class="resource-link">📊 实验结果</a>
-                </div>
-            </section>
-
-            <footer class="paper-footer">
-                <a href="../papers.html" class="back-link">← 返回论文列表</a>
-            </footer>
-        </article>
-    </div>
-
+    <link rel="stylesheet" href="../css/common.css">
     <style>
+        /* 论文详情页特有样式 */
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
         .paper-detail-page {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -170,9 +52,6 @@
         .paper-header h1 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .paper-authors {
@@ -331,6 +210,142 @@
             color: #764ba2;
         }
     </style>
+</head>
+<body class="theme-linhai">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html">首页</a> /
+            <a href="../pages/papers.html">论文</a> /
+            <span>CSPC 2026</span>
+        </nav>
+
+        <article class="paper-detail-page">
+            <header class="paper-header">
+                <div class="paper-badge">ICASSP 2026</div>
+                <h1>CSPC: A High-Quality Dataset and Comprehensive Evaluation Metric for Chinese Sentence Paraphrasing</h1>
+                <div class="paper-authors">
+                    <strong>作者：</strong>Hai Lin, Zixuan Xiong, Shaoxiong Zhan, Yangning Li, Hai-Tao Zheng, Yue Yu, Hong-Gee Kim, Ying Yang
+                </div>
+                <div class="paper-tags">
+                    <span class="tag">中文句子改写</span>
+                    <span class="tag">数据集</span>
+                    <span class="tag">评估指标</span>
+                    <span class="tag">ICASSP 2026</span>
+                </div>
+            </header>
+
+            <section class="paper-section">
+                <h2>📖 研究背景</h2>
+                <p>中文句子改写（Paraphrasing）是自然语言处理领域的重要任务，旨在保持原句语义的前提下，用不同的表达方式重新组织句子。该技术在对话系统、文本摘要、数据增强等多个下游任务中具有广泛应用。</p>
+                <p>然而，现有研究面临两大挑战：</p>
+                <ul>
+                    <li><strong>缺乏高质量数据集</strong>：现有中文改写数据集规模小、质量参差不齐，难以满足深度学习模型训练需求</li>
+                    <li><strong>评估指标不完善</strong>：缺乏综合评估指标，无法全面衡量改写质量的多维度特性</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🎯 主要贡献</h2>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-number">1</div>
+                        <div class="contribution-content">
+                            <h3>构建大规模高质量中文改写数据集 CSPC</h3>
+                            <p>数据集包含多领域的中文句子对，经过严格的质量控制和人工标注，确保改写句子的语义一致性和表达多样性。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">2</div>
+                        <div class="contribution-content">
+                            <h3>提出综合评估指标框架</h3>
+                            <p>评估指标覆盖多个维度：</p>
+                            <ul>
+                                <li><strong>语义保持</strong>：确保改写后语义不变</li>
+                                <li><strong>流畅性</strong>：保证改写句子自然流畅</li>
+                                <li><strong>多样性</strong>：衡量改写的表达丰富度</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">3</div>
+                        <div class="contribution-content">
+                            <h3>实验验证与基准测试</h3>
+                            <p>在多个基准数据集上进行实验，验证了CSPC数据集和评估指标的有效性，为后续研究提供了可靠的评估工具。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="paper-section">
+                <h2>🔧 技术方案</h2>
+
+                <h3>数据集构建流程</h3>
+                <div class="tech-flow">
+                    <div class="flow-step">
+                        <div class="step-number">Step 1</div>
+                        <div class="step-content">
+                            <h4>多源数据采集</h4>
+                            <p>从新闻、小说、对话等多个领域收集原始句子</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">Step 2</div>
+                        <div class="step-content">
+                            <h4>模型辅助改写</h4>
+                            <p>利用预训练大模型生成候选改写句子</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">Step 3</div>
+                        <div class="step-content">
+                            <h4>人工质量审核</h4>
+                            <p>专业标注人员对改写质量进行多轮审核</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">Step 4</div>
+                        <div class="step-content">
+                            <h4>数据清洗与标准化</h4>
+                            <p>去除低质量样本，统一数据格式</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>评估指标架构</h3>
+                <p>采用<strong>混合架构</strong>，结合预训练模型和规则方法：</p>
+                <ul>
+                    <li><strong>预训练模型</strong>：基于BERT等模型提取语义特征，计算语义相似度</li>
+                    <li><strong>规则方法</strong>：基于语言学规则，评估句法结构和词汇多样性</li>
+                    <li><strong>融合策略</strong>：加权融合多个评估维度，得到综合评分</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>📊 实验结果</h2>
+                <p>实验结果表明：</p>
+                <ul>
+                    <li>CSPC数据集在多个下游任务中显著提升模型性能</li>
+                    <li>提出的评估指标与人工评价高度相关（相关系数 > 0.85）</li>
+                    <li>综合评估指标优于现有单一指标方法</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🔗 相关资源</h2>
+                <div class="resource-links">
+                    <a href="#" class="resource-link">📄 论文PDF</a>
+                    <a href="#" class="resource-link">💾 数据集下载</a>
+                    <a href="#" class="resource-link">💻 代码仓库</a>
+                    <a href="#" class="resource-link">📊 实验结果</a>
+                </div>
+            </section>
+
+            <footer class="paper-footer">
+                <a href="../pages/papers.html" class="back-link">← 返回论文列表</a>
+            </footer>
+        </article>
+    </div>
+
+    <script src="../js/common.js"></script>
 </body>
 </html>
-
