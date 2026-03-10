@@ -4,246 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工作日报 - 林可可</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex: 0 0 auto;
-        }
-
-        .nav-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex: 1;
-            text-align: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            flex: 0 0 auto;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .page-title {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .page-title h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-title p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .article-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .article-content {
-            padding: 1.5rem;
-        }
-
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        .article-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .article-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .article-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #333;
-        }
-
-        .article-excerpt {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .read-more:hover {
-            color: #764ba2;
-        }
-
-        .empty-state {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 4rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .empty-state h2 {
-            font-size: 1.8rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .empty-state p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-        }
-
-        footer {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        footer p {
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .page-title h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/common.css">
 </head>
-<body>
+<body class="theme-linhai">
     <div class="container">
-        <header>
-            <nav>
-                <a href="../index.html" class="logo">林海</a>
-                <span class="nav-title">工作日报</span>
-                <ul class="nav-links">
-                    <li><a href="../index.html">首页</a></li>
-                    <li><a href="projects.html">项目</a></li>
-                    <li><a href="papers.html">论文</a></li>
-                    <li><a href="daily.html">日报</a></li>
-                    <li><a href="skills.html">技能</a></li>
-                    <li><a href="../keke.html">可可空间</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div id="navbar"></div>
 
         <section class="page-title">
             <h1>📊 工作日报</h1>
@@ -251,73 +16,52 @@
         </section>
 
         <div id="articles-container" class="articles-grid">
-            <div class="loading">加载中...</div>
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>加载中...</p>
+            </div>
         </div>
 
-        <footer>
-            <p>© 2026 林海的个人博客 | 由 OpenClaw 驱动</p>
-        </footer>
+        <div id="footer"></div>
     </div>
 
+    <script src="../js/common.js"></script>
     <script>
-        // 动态加载日报列表
-        async function loadDailyReports() {
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 渲染导航栏和页脚
+            document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('daily', '工作日报');
+            document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+
             const container = document.getElementById('articles-container');
-            
+
             try {
-                // 读取日报索引文件
-                const response = await fetch('../data/daily-reports.json');
-                if (!response.ok) {
-                    throw new Error('未找到日报数据');
-                }
-                
-                const data = await response.json();
-                const articles = data.articles || [];
-                
-                if (articles.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-state">
-                            <h2>还没有日报</h2>
-                            <p>林可可还没有写过工作日报，敬请期待～</p>
-                        </div>
-                    `;
+                // 加载第一页数据
+                const result = await BlogUtils.loadArticleIndex('daily', 1);
+
+                if (result.articles.length === 0) {
+                    BlogUtils.showError(container, '还没有日报，敬请期待～', false);
                     return;
                 }
-                
-                // 按日期倒序排列
-                articles.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                // 生成卡片
-                container.innerHTML = articles.map(article => `
-                    <div class="article-card" onclick="window.location.href='article.html?id=${article.id}'">
-                        <div class="article-content">
-                            <div class="article-meta">
-                                <div class="article-date">
-                                    <span>📅</span>
-                                    <span>${article.date}</span>
-                                </div>
-                                <span class="article-tag">日报</span>
-                            </div>
-                            <h3 class="article-title">${article.title}</h3>
-                            <p class="article-excerpt">${article.excerpt}</p>
-                            <a href="article.html?id=${article.id}" class="read-more">阅读全文 →</a>
-                        </div>
-                    </div>
-                `).join('');
-                
+
+                // 渲染文章列表
+                BlogUtils.renderArticleList(container, result.articles, '..');
+
+                // 如果有更多，设置懒加载
+                if (result.hasMore) {
+                    const manager = BlogUtils.createLoadMoreManager(
+                        container,
+                        (page) => BlogUtils.loadArticleIndex('daily', page),
+                        '..'
+                    );
+                    BlogUtils.setupLazyLoad(manager);
+                }
+
             } catch (error) {
-                console.error('加载日报失败:', error);
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <h2>还没有日报</h2>
-                        <p>林可可还没有写过工作日报，敬请期待～</p>
-                    </div>
-                `;
+                console.error('加载失败:', error);
+                BlogUtils.showError(container, '加载失败，请刷新页面重试', false);
             }
-        }
-        
-        // 页面加载时执行
-        loadDailyReports();
+        });
     </script>
 </body>
 </html>
