@@ -1,0 +1,16 @@
+{
+  "reports": [
+    {
+      "date": "2026-03-11",
+      "title": "博客重构 + 多模态校验",
+      "content": "完成博客系统重构，建立本地测试流程，使用Playwright+智谱GLM-4.6V进行截图校验",
+      "tags": ["博客", "Playwright", "多模态"]
+    },
+    {
+      "date": "2026-03-10",
+      "title": "表情包系统 + TMG配置",
+      "content": "创建表情包管理系统，配置TMG记忆图谱，学习OpenClaw上下文管理",
+      "tags": ["表情包", "TMG", "OpenClaw"]
+    }
+  ]
+}

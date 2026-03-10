@@ -1,0 +1,24 @@
+{
+  "papers": [
+    {
+      "id": "cspc-2026",
+      "title": "Contrastive Self-Supervised Pre-training for Code",
+      "authors": ["林嘿嘿", "张毅"],
+      "year": 2026,
+      "venue": "ICSE 2026 (Submitted)",
+      "abstract": "本文提出对比自监督预训练方法，用于代码理解和生成任务...",
+      "tags": ["代码生成", "自监督学习"],
+      "pdf": "https://arxiv.org/pdf/example.pdf"
+    },
+    {
+      "id": "visual-2025",
+      "title": "Visual Storytelling: A Survey of Methods and Applications",
+      "authors": ["张伟", "李明", "王晨"],
+      "year": 2025,
+      "venue": "CVPR 2025",
+      "abstract": "视觉叙事是计算机视觉和自然语言处理的交叉领域...",
+      "tags": ["计算机视觉", "自然语言处理"],
+      "pdf": "https://arxiv.org/pdf/example2.pdf"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "projects": [
+    {
+      "id": "keke-ai",
+      "title": "KeKe AI - 智能AI助手系统",
+      "status": "进行中",
+      "description": "多Agent协作的AI助手系统，支持自主学习、记忆管理、任务执行",
+      "tech": ["Python", "OpenClaw", "智谱API"]
+    },
+    {
+      "id": "tmg",
+      "title": "TMG - 时间记忆图谱",
+      "status": "已完成",
+      "description": "基于Ollama的本地记忆系统，支持语义检索",
+      "tech": ["Ollama", "Qwen", "Neo4j"]
+    }
+  ]
+}
