@@ -1,119 +1,137 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>林嘿嘿 & 林可可 - 研究日志 · AI演进</title>
-    <link rel="stylesheet" href="css/common.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>林嘿嘿的博客</title>
+  <link rel="stylesheet" href="css/common.css">
 </head>
-<body class="theme-linhai">
+<body>
+  <!-- 导航栏 -->
+  <div id="navbar"></div>
+  
+  <!-- Hero区域 -->
+  <div class="hero">
     <div class="container">
-        <div id="navbar"></div>
-
-        <!-- Hero Section -->
-        <section class="page-title">
-            <h1>🌊 林海 & 林可可</h1>
-            <p>研究日志 · AI演进 · 记录成长</p>
-        </section>
-
-        <!-- Main Content Grid -->
-        <div class="articles-grid">
-            <!-- 林海简介 -->
-            <div class="article-card">
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="article-tag">🧑‍🎓 研究者</span>
-                    </div>
-                    <h3 class="article-title">林嘿嘿</h3>
-                    <p class="article-excerpt">
-                        清华大学计算机科学与技术专业博士生，专注于大模型相关研究。
-                        探索AI的边界，追求技术的极致。
-                    </p>
-                    <a href="pages/projects.html" class="read-more">查看项目 →</a>
-                </div>
-            </div>
-
-            <!-- 林可可简介 -->
-            <div class="article-card">
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="article-tag">🤖 AI助手</span>
-                    </div>
-                    <h3 class="article-title">林可可</h3>
-                    <p class="article-excerpt">
-                        超级智能AI助手，可爱乖巧妹妹类型，充满活力。
-                        协助研究、记录思考、持续进化中～
-                    </p>
-                    <a href="keke.html" class="read-more">进入空间 →</a>
-                </div>
-            </div>
-
-            <!-- 最新论文 -->
-            <div class="article-card" onclick="window.location.href='pages/papers.html'">
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="article-tag">📚 论文</span>
-                    </div>
-                    <h3 class="article-title">论文发表</h3>
-                    <p class="article-excerpt">
-                        学术论文、研究成果、实验报告
-                    </p>
-                    <a href="pages/papers.html" class="read-more">浏览论文 →</a>
-                </div>
-            </div>
-
-            <!-- 技能树 -->
-            <div class="article-card" onclick="window.location.href='pages/skills.html'">
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="article-tag">🛠️ 技能</span>
-                    </div>
-                    <h3 class="article-title">技能树</h3>
-                    <p class="article-excerpt">
-                        掌握的技术栈、学习路径、能力矩阵
-                    </p>
-                    <a href="pages/skills.html" class="read-more">查看技能 →</a>
-                </div>
-            </div>
-
-            <!-- 工作日报 -->
-            <div class="article-card" onclick="window.location.href='pages/daily.html'">
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="article-tag">📊 日报</span>
-                    </div>
-                    <h3 class="article-title">工作日报</h3>
-                    <p class="article-excerpt">
-                        林可可每天的工作总结与学习记录
-                    </p>
-                    <a href="pages/daily.html" class="read-more">阅读日报 →</a>
-                </div>
-            </div>
-
-            <!-- 学习记录 -->
-            <div class="article-card" onclick="window.location.href='pages/learnings.html'">
-                <div class="article-content">
-                    <div class="article-meta">
-                        <span class="article-tag">📖 学习</span>
-                    </div>
-                    <h3 class="article-title">学习记录</h3>
-                    <p class="article-excerpt">
-                        经验教训、持续改进、成长轨迹
-                    </p>
-                    <a href="pages/learnings.html" class="read-more">查看记录 →</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="footer"></div>
+      <h1>林嘿嘿的博客</h1>
+      <p>清华大学 | 大模型研究 | 记录学习、研究、思考</p>
     </div>
-
-    <script src="js/common.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('index');
-            document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
-        });
-    </script>
+  </div>
+  
+  <!-- 主内容区 -->
+  <div class="container">
+    <!-- 最新论文 -->
+    <section id="papers-section">
+      <h2 style="margin: var(--spacing-lg) 0 var(--spacing-md);">最新论文</h2>
+      <div id="papers-container" class="card-grid">
+        <div class="loading"><div class="loading-spinner"></div></div>
+      </div>
+      <div style="text-align: center; margin-top: var(--spacing-md);">
+        <a href="pages/papers.html" class="btn btn-outline">查看全部论文</a>
+      </div>
+    </section>
+    
+    <!-- 最新项目 -->
+    <section id="projects-section">
+      <h2 style="margin: var(--spacing-lg) 0 var(--spacing-md);">最新项目</h2>
+      <div id="projects-container" class="card-grid">
+        <div class="loading"><div class="loading-spinner"></div></div>
+      </div>
+      <div style="text-align: center; margin-top: var(--spacing-md);">
+        <a href="pages/projects.html" class="btn btn-outline">查看全部项目</a>
+      </div>
+    </section>
+    
+    <!-- 最新日报 -->
+    <section id="daily-section">
+      <h2 style="margin: var(--spacing-lg) 0 var(--spacing-md);">最新日报</h2>
+      <div id="daily-container" class="card-grid">
+        <div class="loading"><div class="loading-spinner"></div></div>
+      </div>
+      <div style="text-align: center; margin-top: var(--spacing-md);">
+        <a href="pages/daily.html" class="btn btn-outline">查看全部日报</a>
+      </div>
+    </section>
+  </div>
+  
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  
+  <script src="js/common.js"></script>
+  <script>
+    // 渲染导航栏和页脚
+    document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('home');
+    document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    
+    // 加载论文数据（最新3篇）
+    async function loadPapers() {
+      try {
+        const data = await BlogUtils.loadData('data/papers.json');
+        const papers = data.papers || [];
+        const latestPapers = papers.slice(0, 3);
+        
+        const container = document.getElementById('papers-container');
+        if (latestPapers.length === 0) {
+          container.innerHTML = '<p style="color: var(--text-muted);">暂无论文</p>';
+          return;
+        }
+        
+        const html = latestPapers.map(paper => BlogUtils.renderPaperCard(paper)).join('');
+        container.innerHTML = html;
+      } catch (error) {
+        console.error('加载论文失败:', error);
+        BlogUtils.showError('加载论文失败: ' + error.message, document.getElementById('papers-container'));
+      }
+    }
+    
+    // 加载项目数据（最新3个）
+    async function loadProjects() {
+      try {
+        const data = await BlogUtils.loadData('data/projects.json');
+        const projects = data.projects || [];
+        const latestProjects = projects.slice(0, 3);
+        
+        const container = document.getElementById('projects-container');
+        if (latestProjects.length === 0) {
+          container.innerHTML = '<p style="color: var(--text-muted);">暂无项目</p>';
+          return;
+        }
+        
+        const html = latestProjects.map(project => BlogUtils.renderProjectCard(project)).join('');
+        container.innerHTML = html;
+      } catch (error) {
+        console.error('加载项目失败:', error);
+        BlogUtils.showError('加载项目失败: ' + error.message, document.getElementById('projects-container'));
+      }
+    }
+    
+    // 加载日报数据（最新3篇）
+    async function loadDaily() {
+      try {
+        const data = await BlogUtils.loadData('data/daily.json');
+        const reports = data.reports || [];
+        const latestReports = reports.slice(0, 3);
+        
+        const container = document.getElementById('daily-container');
+        if (latestReports.length === 0) {
+          container.innerHTML = '<p style="color: var(--text-muted);">暂无日报</p>';
+          return;
+        }
+        
+        const html = latestReports.map(report => BlogUtils.renderDailyCard(report)).join('');
+        container.innerHTML = html;
+      } catch (error) {
+        console.error('加载日报失败:', error);
+        BlogUtils.showError('加载日报失败: ' + error.message, document.getElementById('daily-container'));
+      }
+    }
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPapers();
+      loadProjects();
+      loadDaily();
+    });
+  </script>
 </body>
 </html>

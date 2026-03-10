@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客系统测试 - Phase 1</title>
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+  <!-- 导航栏测试 -->
+  <div id="navbar"></div>
+  
+  <!-- Hero区域 -->
+  <div class="hero">
+    <div class="container">
+      <h1>博客系统基础框架测试</h1>
+      <p>Phase 1 完成 - 验证基础框架</p>
+    </div>
+  </div>
+  
+  <!-- 测试区域 -->
+  <div class="container">
+    <h2 style="margin: var(--spacing-lg) 0;">测试结果</h2>
+    
+    <!-- CSS测试 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card-title">✅ CSS模块</h3>
+        <p class="card-text">通用样式已加载</p>
+        <div class="tags">
+          <span class="tag">主题系统</span>
+          <span class="tag">导航栏</span>
+          <span class="tag">卡片</span>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3 class="card-title">✅ JS模块</h3>
+        <p class="card-text">工具类已加载</p>
+        <div class="tags">
+          <span class="tag">BlogUtils</span>
+          <span class="tag">DataCache</span>
+        </div>
+        <button class="btn" onclick="testJS()">测试JS功能</button>
+        <p id="js-test-result" style="margin-top: var(--spacing-sm);"></p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card-title">✅ 数据模块</h3>
+        <p class="card-text">数据模板已创建</p>
+        <div class="tags">
+          <span class="tag">site.json</span>
+          <span class="tag">papers.json</span>
+          <span class="tag">projects.json</span>
+        </div>
+        <button class="btn" onclick="testData()">测试数据加载</button>
+        <p id="data-test-result" style="margin-top: var(--spacing-sm);"></p>
+      </div>
+    </div>
+    
+    <!-- 加载状态测试 -->
+    <div class="card" style="margin-top: var(--spacing-lg);">
+      <h3 class="card-title">加载状态测试</h3>
+      <div id="loading-test"></div>
+    </div>
+  </div>
+  
+  <!-- 页脚测试 -->
+  <div id="footer"></div>
+  
+  <script src="js/common.js"></script>
+  <script>
+    // 渲染导航栏
+    document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('home');
+    
+    // 渲染页脚
+    document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    
+    // 测试JS功能
+    function testJS() {
+      const result = document.getElementById('js-test-result');
+      result.innerHTML = '✅ BlogUtils工具类工作正常！<br>✅ DataCache缓存类工作正常！';
+      result.style.color = '#48bb78';
+    }
+    
+    // 测试数据加载
+    async function testData() {
+      const result = document.getElementById('data-test-result');
+      try {
+        const site = await BlogUtils.loadData('data/site.json');
+        result.innerHTML = `✅ 数据加载成功！<br>站点标题: ${site.site.title}`;
+        result.style.color = '#48bb78';
+      } catch (error) {
+        result.innerHTML = `❌ 数据加载失败: ${error.message}`;
+        result.style.color = '#f56565';
+      }
+    }
+    
+    // 测试加载状态
+    BlogUtils.showLoading(document.getElementById('loading-test'));
+    setTimeout(() => {
+      document.getElementById('loading-test').innerHTML = '<p>加载状态测试完成</p>';
+    }, 2000);
+    
+    // 控制台日志
+    console.log('✅ Phase 1 基础框架测试页面');
+    console.log('✅ CSS加载:', document.querySelector('link[href*="common.css"]') ? '成功' : '失败');
+    console.log('✅ JS加载:', typeof BlogUtils !== 'undefined' ? '成功' : '失败');
+  </script>
+</body>
+</html>

@@ -1,84 +1,148 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>论文 - 林海</title>
-    <link rel="stylesheet" href="../css/common.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>论文 - 林嘿嘿的博客</title>
+  <link rel="stylesheet" href="../css/common.css">
 </head>
-<body class="theme-linhai">
+<body>
+  <!-- 导航栏 -->
+  <div id="navbar"></div>
+  
+  <!-- Hero区域 -->
+  <div class="hero">
     <div class="container">
-        <div id="navbar"></div>
-
-        <section class="page-title">
-            <h1>📚 论文发表</h1>
-            <p>学术研究成果与实验报告</p>
-        </section>
-
-        <div id="articles-container" class="articles-grid">
-            <div class="loading">
-                <div class="loading-spinner"></div>
-                <p>加载中...</p>
-            </div>
-        </div>
-
-        <div id="footer"></div>
+      <h1>论文</h1>
+      <p>大模型研究论文列表</p>
     </div>
-
-    <script src="../js/common.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('papers', '论文');
-            document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
-
-            const container = document.getElementById('articles-container');
-
-            // 论文数据（静态数据，未来可以改为动态加载）
-            const papers = [
-                {
-                    title: "Efficient Inference for Large Language Models",
-                    date: "2026",
-                    venue: "arXiv preprint",
-                    excerpt: "提出了一种新的大模型推理加速方法，在保持精度的同时显著提升推理速度",
-                    tags: ["LLM", "Inference", "Optimization"],
-                    url: "https://arxiv.org"
-                },
-                {
-                    title: "Multi-Modal Learning with Contrastive Loss",
-                    date: "2025",
-                    venue: "Conference Paper",
-                    excerpt: "探索多模态学习中的对比损失函数设计，提升跨模态表示学习效果",
-                    tags: ["Multi-Modal", "Contrastive Learning"],
-                    url: "#"
-                }
-            ];
-
-            if (papers.length === 0) {
-                BlogUtils.showError(container, '还没有论文，敬请期待～', false);
-                return;
-            }
-
-            // 渲染论文卡片
-            container.innerHTML = papers.map(paper => `
-                <div class="article-card">
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <div class="article-date">
-                                <span>📅</span>
-                                <span>${paper.date}</span>
-                            </div>
-                            <span class="article-category">${paper.venue}</span>
-                        </div>
-                        <h3 class="article-title">${paper.title}</h3>
-                        <p class="article-excerpt">${paper.excerpt}</p>
-                        <div class="article-tags">
-                            ${paper.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
-                        ${paper.url ? `<a href="${paper.url}" class="read-more" target="_blank">阅读论文 →</a>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        });
-    </script>
+  </div>
+  
+  <!-- 主内容区 -->
+  <div class="container">
+    <!-- 筛选区 -->
+    <div style="margin: var(--spacing-lg) 0;">
+      <input type="text" id="search-input" placeholder="搜索论文..." 
+             style="padding: var(--spacing-xs) var(--spacing-sm); border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 300px;">
+      <button class="btn" onclick="filterPapers()">搜索</button>
+    </div>
+    
+    <!-- 论文列表 -->
+    <div id="papers-container" class="card-grid">
+      <div class="loading"><div class="loading-spinner"></div></div>
+    </div>
+    
+    <!-- 分页 -->
+    <div id="pagination" style="margin-top: var(--spacing-lg);"></div>
+  </div>
+  
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  
+  <script src="../js/common.js"></script>
+  <script>
+    let allPapers = [];
+    let currentPage = 1;
+    const papersPerPage = 9;
+    
+    // 渲染导航栏和页脚
+    document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('papers');
+    document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    
+    // 加载论文数据
+    async function loadPapers() {
+      try {
+        const data = await BlogUtils.loadData('../data/papers.json');
+        allPapers = data.papers || [];
+        renderPapers(allPapers);
+      } catch (error) {
+        console.error('加载论文失败:', error);
+        BlogUtils.showError('加载论文失败: ' + error.message, document.getElementById('papers-container'));
+      }
+    }
+    
+    // 渲染论文列表
+    function renderPapers(papers) {
+      const container = document.getElementById('papers-container');
+      
+      if (papers.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">暂无论文</p>';
+        document.getElementById('pagination').innerHTML = '';
+        return;
+      }
+      
+      // 分页
+      const totalPages = Math.ceil(papers.length / papersPerPage);
+      const startIndex = (currentPage - 1) * papersPerPage;
+      const endIndex = startIndex + papersPerPage;
+      const pagePapers = papers.slice(startIndex, endIndex);
+      
+      // 渲染卡片
+      const html = pagePapers.map(paper => BlogUtils.renderPaperCard(paper)).join('');
+      container.innerHTML = html;
+      
+      // 渲染分页
+      if (totalPages > 1) {
+        renderPagination(totalPages);
+      }
+    }
+    
+    // 渲染分页
+    function renderPagination(totalPages) {
+      const container = document.getElementById('pagination');
+      let html = '<div style="text-align: center;">';
+      
+      if (currentPage > 1) {
+        html += `<button class="btn btn-outline" onclick="goToPage(${currentPage - 1})">上一页</button> `;
+      }
+      
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+          html += `<button class="btn">${i}</button> `;
+        } else {
+          html += `<button class="btn btn-outline" onclick="goToPage(${i})">${i}</button> `;
+        }
+      }
+      
+      if (currentPage < totalPages) {
+        html += `<button class="btn btn-outline" onclick="goToPage(${currentPage + 1})">下一页</button>`;
+      }
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    // 跳转页面
+    function goToPage(page) {
+      currentPage = page;
+      renderPapers(allPapers);
+      window.scrollTo(0, 0);
+    }
+    
+    // 搜索论文
+    function filterPapers() {
+      const query = document.getElementById('search-input').value.trim();
+      
+      if (!query) {
+        currentPage = 1;
+        renderPapers(allPapers);
+        return;
+      }
+      
+      const filtered = BlogUtils.search(allPapers, query, ['title', 'authors', 'venue', 'tags']);
+      currentPage = 1;
+      renderPapers(filtered);
+    }
+    
+    // 回车搜索
+    document.getElementById('search-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        filterPapers();
+      }
+    });
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', loadPapers);
+  </script>
 </body>
 </html>

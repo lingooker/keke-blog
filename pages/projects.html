@@ -1,93 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>项目 - 林海</title>
-    <link rel="stylesheet" href="../css/common.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目 - 林嘿嘿的博客</title>
+  <link rel="stylesheet" href="../css/common.css">
 </head>
-<body class="theme-linhai">
+<body>
+  <!-- 导航栏 -->
+  <div id="navbar"></div>
+  
+  <!-- Hero区域 -->
+  <div class="hero">
     <div class="container">
-        <div id="navbar"></div>
-
-        <section class="page-title">
-            <h1>🚀 项目</h1>
-            <p>林海的研究项目与实践成果</p>
-        </section>
-
-        <div id="articles-container" class="articles-grid">
-            <div class="loading">
-                <div class="loading-spinner"></div>
-                <p>加载中...</p>
-            </div>
-        </div>
-
-        <div id="footer"></div>
+      <h1>项目</h1>
+      <p>我参与的开源项目和研究成果</p>
     </div>
-
-    <script src="../js/common.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('projects', '项目');
-            document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
-
-            const container = document.getElementById('articles-container');
-
-            // 项目数据（静态数据，未来可以改为动态加载）
-            const projects = [
-                {
-                    title: "大模型推理优化",
-                    date: "2026-03",
-                    category: "research",
-                    excerpt: "研究大模型推理加速技术，包括量化、剪枝、知识蒸馏等方法",
-                    tags: ["LLM", "优化", "推理"],
-                    status: "进行中"
-                },
-                {
-                    title: "多模态学习",
-                    date: "2026-02",
-                    category: "research",
-                    excerpt: "探索文本、图像、音频等多模态融合学习方法",
-                    tags: ["多模态", "深度学习"],
-                    status: "进行中"
-                },
-                {
-                    title: "开源博客系统",
-                    date: "2026-03",
-                    category: "project",
-                    excerpt: "基于 GitHub Pages 的静态博客系统，支持 Markdown 动态加载",
-                    tags: ["博客", "前端", "开源"],
-                    url: "https://github.com/lingooker/keke-blog",
-                    status: "已完成"
-                }
-            ];
-
-            if (projects.length === 0) {
-                BlogUtils.showError(container, '还没有项目，敬请期待～', false);
-                return;
-            }
-
-            // 渲染项目卡片
-            container.innerHTML = projects.map(project => `
-                <div class="article-card">
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <div class="article-date">
-                                <span>📅</span>
-                                <span>${project.date}</span>
-                            </div>
-                            <span class="article-category">${project.status}</span>
-                        </div>
-                        <h3 class="article-title">${project.title}</h3>
-                        <p class="article-excerpt">${project.excerpt}</p>
-                        <div class="article-tags">
-                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
-                        ${project.url ? `<a href="${project.url}" class="read-more" target="_blank">查看项目 →</a>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        });
-    </script>
+  </div>
+  
+  <!-- 主内容区 -->
+  <div class="container">
+    <!-- 搜索区 -->
+    <div style="margin: var(--spacing-lg) 0;">
+      <input type="text" id="search-input" placeholder="搜索项目..." 
+             style="padding: var(--spacing-xs) var(--spacing-sm); border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 300px;">
+      <button class="btn" onclick="filterProjects()">搜索</button>
+    </div>
+    
+    <!-- 项目列表 -->
+    <div id="projects-container" class="card-grid">
+      <div class="loading"><div class="loading-spinner"></div></div>
+    </div>
+  </div>
+  
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  
+  <script src="../js/common.js"></script>
+  <script>
+    let allProjects = [];
+    
+    // 渲染导航栏和页脚
+    document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('projects');
+    document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    
+    // 加载项目数据
+    async function loadProjects() {
+      try {
+        const data = await BlogUtils.loadData('../data/projects.json');
+        allProjects = data.projects || [];
+        renderProjects(allProjects);
+      } catch (error) {
+        console.error('加载项目失败:', error);
+        BlogUtils.showError('加载项目失败: ' + error.message, document.getElementById('projects-container'));
+      }
+    }
+    
+    // 渲染项目列表
+    function renderProjects(projects) {
+      const container = document.getElementById('projects-container');
+      
+      if (projects.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">暂无项目</p>';
+        return;
+      }
+      
+      const html = projects.map(project => BlogUtils.renderProjectCard(project)).join('');
+      container.innerHTML = html;
+    }
+    
+    // 搜索项目
+    function filterProjects() {
+      const query = document.getElementById('search-input').value.trim();
+      
+      if (!query) {
+        renderProjects(allProjects);
+        return;
+      }
+      
+      const filtered = BlogUtils.search(allProjects, query, ['title', 'description', 'tech']);
+      renderProjects(filtered);
+    }
+    
+    // 回车搜索
+    document.getElementById('search-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        filterProjects();
+      }
+    });
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', loadProjects);
+  </script>
 </body>
 </html>

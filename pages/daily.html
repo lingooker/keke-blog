@@ -1,67 +1,294 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工作日报 - 林可可</title>
-    <link rel="stylesheet" href="../css/common.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日报 - 林嘿嘿的博客</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* 时间线样式 */
+    .timeline {
+      position: relative;
+      padding: var(--spacing-lg) 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--spacing-xl);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      background: var(--primary);
+      border: 3px solid var(--bg-primary);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .timeline-card {
+      width: 45%;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--spacing-lg);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-card {
+      margin-right: 55%;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-card {
+      margin-left: 55%;
+    }
+    
+    .timeline-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    
+    .timeline-date {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-xs);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .timeline-content {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .timeline-tags {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+    }
+    
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      
+      .timeline-item::before {
+        left: 20px;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-card,
+      .timeline-item:nth-child(even) .timeline-card {
+        width: calc(100% - 50px);
+        margin-left: 50px;
+        margin-right: 0;
+      }
+    }
+  </style>
 </head>
-<body class="theme-linhai">
+<body>
+  <!-- 导航栏 -->
+  <div id="navbar"></div>
+  
+  <!-- Hero区域 -->
+  <div class="hero">
     <div class="container">
-        <div id="navbar"></div>
-
-        <section class="page-title">
-            <h1>📊 工作日报</h1>
-            <p>林可可每天的工作总结与学习记录</p>
-        </section>
-
-        <div id="articles-container" class="articles-grid">
-            <div class="loading">
-                <div class="loading-spinner"></div>
-                <p>加载中...</p>
-            </div>
-        </div>
-
-        <div id="footer"></div>
+      <h1>日报</h1>
+      <p>每日工作总结与学习笔记</p>
     </div>
-
-    <script src="../js/common.js"></script>
-    <script>
-        // 初始化页面
-        document.addEventListener('DOMContentLoaded', async () => {
-            // 渲染导航栏和页脚
-            document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('daily', '工作日报');
-            document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
-
-            const container = document.getElementById('articles-container');
-
-            try {
-                // 加载第一页数据
-                const result = await BlogUtils.loadArticleIndex('daily', 1);
-
-                if (result.articles.length === 0) {
-                    BlogUtils.showError(container, '还没有日报，敬请期待～', false);
-                    return;
-                }
-
-                // 渲染文章列表
-                BlogUtils.renderArticleList(container, result.articles, '..');
-
-                // 如果有更多，设置懒加载
-                if (result.hasMore) {
-                    const manager = BlogUtils.createLoadMoreManager(
-                        container,
-                        (page) => BlogUtils.loadArticleIndex('daily', page),
-                        '..'
-                    );
-                    BlogUtils.setupLazyLoad(manager);
-                }
-
-            } catch (error) {
-                console.error('加载失败:', error);
-                BlogUtils.showError(container, '加载失败，请刷新页面重试', false);
-            }
-        });
-    </script>
+  </div>
+  
+  <!-- 主内容区 -->
+  <div class="container">
+    <!-- 筛选区 -->
+    <div style="margin: var(--spacing-lg) 0;">
+      <input type="text" id="search-input" placeholder="搜索日报..." 
+             style="padding: var(--spacing-xs) var(--spacing-sm); border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 300px;">
+      <button class="btn" onclick="filterReports()">搜索</button>
+    </div>
+    
+    <!-- 日报时间线 -->
+    <div id="reports-container">
+      <div class="loading"><div class="loading-spinner"></div></div>
+    </div>
+    
+    <!-- 分页 -->
+    <div id="pagination" style="margin-top: var(--spacing-lg);"></div>
+  </div>
+  
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  
+  <script src="../js/common.js"></script>
+  <script>
+    let allReports = [];
+    let currentPage = 1;
+    const reportsPerPage = 10;
+    
+    // 渲染导航栏和页脚
+    document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('daily');
+    document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    
+    // 加载日报数据
+    async function loadReports() {
+      try {
+        const data = await BlogUtils.loadData('../data/daily.json');
+        allReports = data.reports || [];
+        // 按日期倒序排序
+        allReports.sort((a, b) => new Date(b.date) - new Date(a.date));
+        renderReports(allReports);
+      } catch (error) {
+        console.error('加载日报失败:', error);
+        BlogUtils.showError('加载日报失败: ' + error.message, document.getElementById('reports-container'));
+      }
+    }
+    
+    // 渲染日报列表（时间线）
+    function renderReports(reports) {
+      const container = document.getElementById('reports-container');
+      
+      if (reports.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: var(--spacing-xl);">暂无日报</p>';
+        document.getElementById('pagination').innerHTML = '';
+        return;
+      }
+      
+      // 分页
+      const totalPages = Math.ceil(reports.length / reportsPerPage);
+      const startIndex = (currentPage - 1) * reportsPerPage;
+      const endIndex = startIndex + reportsPerPage;
+      const pageReports = reports.slice(startIndex, endIndex);
+      
+      // 渲染时间线
+      let html = '<div class="timeline">';
+      pageReports.forEach(report => {
+        html += `
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-date">
+                <span>📅</span>
+                <span>${formatDate(report.date)}</span>
+              </div>
+              <div class="timeline-title">${escapeHtml(report.title)}</div>
+              <div class="timeline-content">${escapeHtml(report.content)}</div>
+              ${report.tags && report.tags.length > 0 ? `
+                <div class="timeline-tags">
+                  ${report.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+      
+      // 渲染分页
+      if (totalPages > 1) {
+        renderPagination(totalPages);
+      }
+    }
+    
+    // 渲染分页
+    function renderPagination(totalPages) {
+      const container = document.getElementById('pagination');
+      let html = '<div style="text-align: center;">';
+      
+      if (currentPage > 1) {
+        html += `<button class="btn btn-outline" onclick="goToPage(${currentPage - 1})">上一页</button> `;
+      }
+      
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+          html += `<button class="btn">${i}</button> `;
+        } else {
+          html += `<button class="btn btn-outline" onclick="goToPage(${i})">${i}</button> `;
+        }
+      }
+      
+      if (currentPage < totalPages) {
+        html += `<button class="btn btn-outline" onclick="goToPage(${currentPage + 1})">下一页</button>`;
+      }
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    // 跳转页面
+    function goToPage(page) {
+      currentPage = page;
+      renderReports(allReports);
+      window.scrollTo(0, 0);
+    }
+    
+    // 搜索日报
+    function filterReports() {
+      const query = document.getElementById('search-input').value.trim();
+      
+      if (!query) {
+        currentPage = 1;
+        renderReports(allReports);
+        return;
+      }
+      
+      const filtered = BlogUtils.search(allReports, query, ['title', 'content', 'tags']);
+      currentPage = 1;
+      renderReports(filtered);
+    }
+    
+    // 格式化日期
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+      return date.toLocaleDateString('zh-CN', options);
+    }
+    
+    // HTML转义
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    // 回车搜索
+    document.getElementById('search-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        filterReports();
+      }
+    });
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', loadReports);
+  </script>
 </body>
 </html>
