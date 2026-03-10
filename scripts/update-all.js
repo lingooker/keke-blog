@@ -17,7 +17,7 @@ const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-const BLOG_DIR = __dirname;
+const BLOG_DIR = path.join(__dirname, '..');
 const LOG_DIR = path.join(__dirname, '..', 'log', 'blog-update');
 
 // 确保日志目录存在
