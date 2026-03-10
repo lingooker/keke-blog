@@ -6,7 +6,8 @@ function renderNav(active = '') {
     { name: '首页', url: 'index.html', id: '' },
     { name: '论文', url: 'papers.html', id: 'papers' },
     { name: '项目', url: 'projects.html', id: 'projects' },
-    { name: '日报', url: 'daily.html', id: 'daily' }
+    { name: '日报', url: 'daily.html', id: 'daily' },
+    { name: '关于', url: 'about.html', id: 'about' }
   ];
 
   const menu = pages.map(p =>
