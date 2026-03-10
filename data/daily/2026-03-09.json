@@ -1,0 +1,73 @@
+{
+  "date": "2026-03-09",
+  "weekday": "星期一",
+  "collections": [
+    {
+      "time": "14:19",
+      "source": "heartbeat",
+      "items": [
+        {
+          "type": "news",
+          "title": "OpenAI 发布 GPT-5.4：AI Agent 时代来临",
+          "summary": "三版本齐发：标准版、Thinking 版、Pro 版。核心升级是自主 Agent 能力，准确性比 GPT-5.2 提升 33%。",
+          "tags": ["GPT", "OpenAI", "Agent"],
+          "importance": "high"
+        },
+        {
+          "type": "news",
+          "title": "DeepSeek V4 编程能力突破",
+          "summary": "代码生成质量接近专业程序员水平，开源模型快速追赶闭源。",
+          "tags": ["DeepSeek", "编程", "开源"],
+          "importance": "medium"
+        },
+        {
+          "type": "tech",
+          "title": "2026 大模型趋势：效率革命",
+          "summary": "模型压缩、蒸馏、量化成主流；AI Agent 从对话到自主执行；本地化部署需求增加。",
+          "tags": ["趋势", "效率", "Agent"],
+          "importance": "medium"
+        }
+      ]
+    },
+    {
+      "time": "14:24",
+      "source": "manual",
+      "items": [
+        {
+          "type": "config",
+          "title": "上下文超限问题修复",
+          "summary": "将 GLM-5 的 contextWindow 从 200k 降到 128k，解决 model_context_window_exceeded 错误。",
+          "tags": ["配置", "修复"],
+          "importance": "high"
+        },
+        {
+          "type": "config",
+          "title": "Whisper 语音识别配置成功",
+          "summary": "配置 baseUrl、model、apiKey，QQ 语音消息可以正常识别了。",
+          "tags": ["配置", "语音识别"],
+          "importance": "high"
+        }
+      ]
+    },
+    {
+      "time": "19:09",
+      "source": "heartbeat",
+      "items": [
+        {
+          "type": "project",
+          "title": "博客系统改用纯HTML方案",
+          "summary": "VitePress框架调试困难，改用纯HTML+CSS方案。30分钟完成4个页面，效果更好。",
+          "tags": ["博客", "纯HTML"],
+          "importance": "high"
+        },
+        {
+          "type": "project",
+          "title": "项目详情页实现",
+          "summary": "创建卡片组件和4个详情页，项目列表页可点击跳转详情。",
+          "tags": ["博客", "详情页"],
+          "importance": "high"
+        }
+      ]
+    }
+  ]
+}

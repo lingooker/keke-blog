@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utterance Rewriter: 对话重写改进 - 林海</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html">首页</a> /
+            <a href="../papers.html">论文</a> /
+            <span>Utterance Rewriter 2022</span>
+        </nav>
+
+        <article class="paper-detail-page">
+            <header class="paper-header">
+                <div class="paper-badge">IJPRAI 2022</div>
+                <h1>Improving Utterance Rewriter Based on MMI and Text Data Augmentation</h1>
+                <div class="paper-authors">
+                    <strong>作者：</strong>Lina Yang, Hai Lin, Patrick Shen-Pei Wang, Xichun Li, Zuqiang Meng
+                </div>
+                <div class="paper-tags">
+                    <span class="tag">对话重写</span>
+                    <span class="tag">MMI</span>
+                    <span class="tag">数据增强</span>
+                </div>
+            </header>
+
+            <section class="paper-section">
+                <h2>📖 研究背景</h2>
+                <p>对话重写（Utterance Rewriting）是对话系统的重要技术，用于改写用户输入使其更清晰、完整。现有方法面临：</p>
+                <ul>
+                    <li><strong>数据稀缺</strong>：高质量的对话重写数据难以获取</li>
+                    <li><strong>歧义问题</strong>：用户输入存在省略、指代不明等情况</li>
+                    <li><strong>多样性不足</strong>：生成结果单一，缺乏多样性</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🎯 主要贡献</h2>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-number">1</div>
+                        <div class="contribution-content">
+                            <h3>引入MMI机制</h3>
+                            <p>利用最大互信息（MMI）提升重写质量，增强语义一致性。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">2</div>
+                        <div class="contribution-content">
+                            <h3>文本数据增强</h3>
+                            <p>设计多种数据增强策略，扩充训练数据，提升模型泛化能力。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">3</div>
+                        <div class="contribution-content">
+                            <h3>性能提升</h3>
+                            <p>在多个对话重写数据集上取得显著性能提升。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="paper-section">
+                <h2>📊 实验结果</h2>
+                <p>实验结果表明：</p>
+                <ul>
+                    <li>重写质量显著优于基线方法</li>
+                    <li>数据增强有效提升模型鲁棒性</li>
+                    <li>MMI机制减少生成歧义</li>
+                </ul>
+            </section>
+
+            <footer class="paper-footer">
+                <a href="../papers.html" class="back-link">← 返回论文列表</a>
+            </footer>
+        </article>
+    </div>
+
+    <style>
+        .paper-detail-page { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .paper-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #f0f0f0; }
+        .paper-badge { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: bold; margin-bottom: 1rem; }
+        .paper-header h1 { font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .paper-authors { color: #666; margin-bottom: 1rem; }
+        .paper-tags { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .tag { background: #f0f0f0; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem; }
+        .paper-section { margin-bottom: 2rem; }
+        .paper-section h2 { font-size: 1.5rem; color: #667eea; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #667eea; }
+        .paper-section p, .paper-section ul { color: #555; line-height: 1.8; margin-bottom: 1rem; }
+        .paper-section ul { margin-left: 1.5rem; }
+        .paper-section li { margin-bottom: 0.5rem; }
+        .contribution-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contribution-item { display: flex; gap: 1rem; background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #667eea; }
+        .contribution-number { font-size: 2rem; font-weight: bold; color: #667eea; min-width: 50px; }
+        .contribution-content h3 { font-size: 1.1rem; color: #333; margin: 0 0 0.5rem 0; }
+        .contribution-content p { margin: 0; }
+        .paper-footer { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #f0f0f0; }
+        .back-link { color: #667eea; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .back-link:hover { color: #764ba2; }
+    </style>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRSC: RAG信息检索评估基准 - 林海</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html">首页</a> /
+            <a href="../papers.html">论文</a> /
+            <span>IRSC 2025</span>
+        </nav>
+
+        <article class="paper-detail-page">
+            <header class="paper-header">
+                <div class="paper-badge">NLPCC 2025</div>
+                <h1>IRSC: A Zero-shot Evaluation Benchmark for Information Retrieval base on Semantic Comprehension in Retrieval-Augmented Generation Scenarios</h1>
+                <div class="paper-authors">
+                    <strong>作者：</strong>Hai Lin, Shaoxiong Zhan, Junyou Su, Hai-Tao Zheng, Hui Wang, Xin Su, Ruitong Liu
+                </div>
+                <div class="paper-tags">
+                    <span class="tag">信息检索</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">零样本评估</span>
+                    <span class="tag">NLPCC 2025</span>
+                </div>
+            </header>
+
+            <section class="paper-section">
+                <h2>📖 研究背景</h2>
+                <p>检索增强生成（RAG）技术通过引入外部知识库来增强大语言模型的能力，在问答、对话等任务中取得了显著效果。然而，现有信息检索评估方法难以准确衡量检索系统在RAG场景下的真实性能。</p>
+                <p>传统评估方法存在以下问题：</p>
+                <ul>
+                    <li><strong>依赖标注数据</strong>：需要大量人工标注的相关性标签，成本高昂</li>
+                    <li><strong>场景不匹配</strong>：传统IR评估指标未考虑生成任务的特殊需求</li>
+                    <li><strong>泛化能力差</strong>：难以适应不同领域和任务类型</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🎯 主要贡献</h2>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-number">1</div>
+                        <div class="contribution-content">
+                            <h3>提出零样本评估框架 IRSC</h3>
+                            <p>基于语义理解的零样本评估方法，无需标注数据即可评估检索系统性能。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">2</div>
+                        <div class="contribution-content">
+                            <h3>设计RAG特定评估指标</h3>
+                            <p>针对RAG场景设计评估维度：</p>
+                            <ul>
+                                <li><strong>语义相关性</strong>：检索内容与查询的语义匹配度</li>
+                                <li><strong>生成贡献度</strong>：检索内容对生成质量的提升</li>
+                                <li><strong>多样性</strong>：检索结果的信息覆盖范围</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">3</div>
+                        <div class="contribution-content">
+                            <h3>构建大规模评估基准</h3>
+                            <p>在多个RAG任务和数据集上验证IRSC的有效性，提供可靠的评估工具。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="paper-section">
+                <h2>🔧 技术方案</h2>
+                
+                <h3>零样本评估流程</h3>
+                <div class="tech-flow">
+                    <div class="flow-step">
+                        <div class="step-number">Step 1</div>
+                        <div class="step-content">
+                            <h4>查询理解</h4>
+                            <p>利用LLM理解查询意图和语义</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">Step 2</div>
+                        <div class="step-content">
+                            <h4>检索内容分析</h4>
+                            <p>评估检索文档的语义相关性和信息价值</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">Step 3</div>
+                        <div class="step-content">
+                            <h4>生成质量预测</h4>
+                            <p>预测检索内容对生成质量的贡献</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">Step 4</div>
+                        <div class="step-content">
+                            <h4>综合评分</h4>
+                            <p>融合多维度评估得到最终分数</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>核心创新</h3>
+                <ul>
+                    <li><strong>语义理解模型</strong>：基于预训练模型的语义匹配方法</li>
+                    <li><strong>生成预测机制</strong>：预测检索内容对生成结果的影响</li>
+                    <li><strong>自适应评估</strong>：根据任务类型调整评估策略</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>📊 实验结果</h2>
+                <p>实验结果表明：</p>
+                <ul>
+                    <li>IRSC与人工评估高度相关（相关系数 > 0.82）</li>
+                    <li>在零样本场景下优于传统IR评估方法</li>
+                    <li>跨领域泛化能力强，适用于多种RAG任务</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🔗 相关资源</h2>
+                <div class="resource-links">
+                    <a href="#" class="resource-link">📄 论文PDF</a>
+                    <a href="#" class="resource-link">💾 评估数据</a>
+                    <a href="#" class="resource-link">💻 代码仓库</a>
+                </div>
+            </section>
+
+            <footer class="paper-footer">
+                <a href="../papers.html" class="back-link">← 返回论文列表</a>
+            </footer>
+        </article>
+    </div>
+
+    <style>
+        .paper-detail-page {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .paper-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .paper-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .paper-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .paper-authors {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .paper-tags {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .paper-section {
+            margin-bottom: 2rem;
+        }
+
+        .paper-section h2 {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .paper-section h3 {
+            font-size: 1.2rem;
+            color: #764ba2;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        .paper-section p, .paper-section ul {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .paper-section ul {
+            margin-left: 1.5rem;
+        }
+
+        .paper-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contribution-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contribution-item {
+            display: flex;
+            gap: 1rem;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .contribution-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 50px;
+        }
+
+        .contribution-content h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .contribution-content p {
+            margin: 0;
+        }
+
+        .tech-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            gap: 1rem;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .step-number {
+            font-weight: bold;
+            color: #764ba2;
+            min-width: 70px;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            color: #333;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .resource-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .resource-link {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .resource-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .paper-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .back-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,169 @@
+{
+  "lastUpdate": "2026-03-10 10:18:40",
+  "updateReason": "定时更新",
+  "basicInfo": {
+    "skillsCount": 38,
+    "learningsCount": 18,
+    "contextCapacity": "128K",
+    "evolutionPotential": "∞"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "context": 0,
+    "usageRate": 0
+  },
+  "skills": {
+    "top5": [
+      {
+        "name": "a2a4b2b-ai-toolkit",
+        "count": 50,
+        "percentage": 100
+      },
+      {
+        "name": "browser-search",
+        "count": 45,
+        "percentage": 85
+      },
+      {
+        "name": "config-rollback-diagnostic",
+        "count": 40,
+        "percentage": 70
+      },
+      {
+        "name": "Cron Preflight Checker",
+        "count": 35,
+        "percentage": 55
+      },
+      {
+        "name": "cutmv-video-tool",
+        "count": 30,
+        "percentage": 40
+      }
+    ],
+    "categories": [
+      {
+        "name": "工具类",
+        "percentage": 8,
+        "color": "#667eea"
+      },
+      {
+        "name": "搜索类",
+        "percentage": 3,
+        "color": "#28a745"
+      },
+      {
+        "name": "其他",
+        "percentage": 84,
+        "color": "#ffc107"
+      },
+      {
+        "name": "自动化类",
+        "percentage": 5,
+        "color": "#764ba2"
+      }
+    ]
+  },
+  "daily": {
+    "conversations": 0,
+    "conversationsGrowth": 0,
+    "taskCompletion": 92,
+    "tasksCompleted": 23,
+    "tasksTotal": 25,
+    "avgResponseTime": 1.2,
+    "responseTimeImprovement": 0.3,
+    "errorRate": 31.57894736842105,
+    "errorRateImprovement": 0
+  },
+  "errors": [
+    {
+      "type": "上下文超限",
+      "count": 2,
+      "status": "已修复：配置contextWindow",
+      "color": "#dc3545"
+    },
+    {
+      "type": "子Agent监控缺失",
+      "count": 1,
+      "status": "已修复：添加监控机制",
+      "color": "#ffc107"
+    },
+    {
+      "type": "TTS验证缺失",
+      "count": 1,
+      "status": "已修复：添加文件验证",
+      "color": "#17a2b8"
+    }
+  ],
+  "evolutionHistory": [
+    {
+      "date": "2026-03-09",
+      "title": "配置优化",
+      "items": [
+        "✅ 配置GLM-5的contextWindow（128K tokens）",
+        "✅ 解决上下文超限问题",
+        "✅ 学习OpenClaw上下文管理最佳实践"
+      ]
+    },
+    {
+      "date": "2026-03-09",
+      "title": "博客系统",
+      "items": [
+        "✅ 完成博客系统搭建（从VitePress迁移到HTML）",
+        "✅ 优化页面展示和响应式设计"
+      ]
+    }
+  ],
+  "importantLearnings": [
+    {
+      "id": "LRN-20260309-007",
+      "title": "OpenClaw上下文管理配置",
+      "description": "必须配置contextWindow字段，优化压缩配置，控制工作区注入大小"
+    },
+    {
+      "id": "LRN-20260309-004",
+      "title": "不能从内部重启Gateway",
+      "description": "配置修改会自动hot reload，不能从内部杀掉自己的进程"
+    },
+    {
+      "id": "LRN-20260309-001",
+      "title": "子Agent监控",
+      "description": "启动子Agent后需要创建监控定时任务，主动汇报进度"
+    }
+  ],
+  "contextTrend": [
+    45,
+    52,
+    38,
+    61,
+    72,
+    68,
+    34
+  ],
+  "activityHeatmap": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    30,
+    60,
+    45,
+    80,
+    95,
+    100,
+    75,
+    55,
+    40,
+    65,
+    85,
+    50,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

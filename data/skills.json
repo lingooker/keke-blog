@@ -1,0 +1,230 @@
+[
+  {
+    "name": "a2a4b2b-ai-toolkit",
+    "description": "A2A4B2B服务Agent ID",
+    "folder": "a2a4b2b",
+    "path": "skills/a2a4b2b/SKILL.md"
+  },
+  {
+    "name": "browser-search",
+    "description": "零API依赖的浏览器搜索方法 - 直接访问网站获取信息",
+    "folder": "browser-search",
+    "path": "skills/browser-search/SKILL.md"
+  },
+  {
+    "name": "config-rollback-diagnostic",
+    "description": "配置回滚诊断工具。用于安全修改OpenClaw配置文件。触发场景：识别到需要修改openclaw的配置时启动。功能：修改配置前备份当前可用配置，启动独立监控程序监控OpenClaw是否使用新配置启动成功。OpenClaw启动成功后需发送启动成功信号。独立监控程序150秒未收到消息则认定启动失败，运行诊断命令并保留日志，然后自动回滚到备份配置。整合OpenClaw社区自动化技巧：幂等性设计、原子写入、结构化日志、重试退避、资源熔断。",
+    "folder": "config-rollback-diagnostic",
+    "path": "skills/config-rollback-diagnostic/SKILL.md"
+  },
+  {
+    "name": "Cron Preflight Checker",
+    "description": "OpenClaw定时任务安全预检工具。自动分析cron任务风险等级，生成Preflight计划，提供四级风险评估（L0-L3），确保定时任务安全执行。",
+    "folder": "cron-preflight-checker",
+    "path": "skills/cron-preflight-checker/SKILL.md"
+  },
+  {
+    "name": "cutmv-video-tool",
+    "description": "A video processing skill for OpenClaw that leverages FFmpeg to perform video/audio cutting, format conversion, and compression.",
+    "folder": "cutmv-video-tool",
+    "path": "skills/cutmv-video-tool/SKILL.md"
+  },
+  {
+    "name": "Docker容器备份技能",
+    "description": "基于Dockerbackup.py的Docker容器全量备份技能，提供完整的Docker容器备份、恢复和管理功能。支持备份所有运行中的Docker容器，包括镜像和运行配置，确保在系统故障或迁移时能够快速恢复。",
+    "folder": "docker-backup",
+    "path": "skills/docker-backup/SKILL.md"
+  },
+  {
+    "name": "飞书办公套件",
+    "description": "飞书开放平台全面集成工具包。支持日历与会议室预约、消息发送、审批流程、多维表格操作、通讯录查询和考勤管理六大核心办公模块。",
+    "folder": "feishu-toolkit",
+    "path": "skills/feishu-toolkit/SKILL.md"
+  },
+  {
+    "name": "find-skills",
+    "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
+    "folder": "find-skills",
+    "path": "skills/find-skills/SKILL.md"
+  },
+  {
+    "name": "flyclaw",
+    "description": "航班信息聚合查询工具 -- 基于多源聚合架构，通过开源库及免费公开 API 获取航班动态、价格、时刻等信息。支持中英文输入、往返搜索、多旅客、舱位选择，覆盖国内及国际航班。零 API Key 依赖。",
+    "folder": "flyclaw",
+    "path": "skills/flyclaw/SKILL.md"
+  },
+  {
+    "name": "gemini-visual-gems",
+    "description": "Google Gemini视觉设计工具 - 17种风格，一键生成科研配图、论文图表、信息图",
+    "folder": "gemini-visual-gems",
+    "path": "skills/gemini-visual-gems/SKILL.md"
+  },
+  {
+    "name": "local-whisper-stt",
+    "description": "本地Whisper语音识别服务。支持GPU加速，无需API key，自动转录QQ语音消息。",
+    "folder": "local-whisper-stt",
+    "path": "skills/local-whisper-stt/SKILL.md"
+  },
+  {
+    "name": "Playwright 浏览器自动化助手",
+    "description": "Python Playwright 浏览器自动化工具，支持网页截图、元素交互、数据抓取等",
+    "folder": "local__playwright-helper",
+    "path": "skills/local__playwright-helper/SKILL.md"
+  },
+  {
+    "name": "网页转PDF工具",
+    "description": "使用 Playwright 将网页转换为 PDF 文件，支持反爬虫模式",
+    "folder": "local__web-to-pdf",
+    "path": "skills/local__web-to-pdf/SKILL.md"
+  },
+  {
+    "name": "日志分析工具",
+    "description": "DL 创建任务耗时分析工具，支持多线程处理、时间筛选、耗时统计",
+    "folder": "log-analyzer",
+    "path": "skills/log-analyzer/SKILL.md"
+  },
+  {
+    "name": "Memory Optimizer",
+    "description": "OpenClaw记忆管理优化工具。基于社区最佳实践，提供4层面优化方案：配置优化、按需加载、智能搜索、定期清理，帮助Agent减少90%+ Token消耗。",
+    "folder": "memory-optimizer",
+    "path": "skills/memory-optimizer/SKILL.md"
+  },
+  {
+    "name": "meta-agent-evolution",
+    "description": "元迭代智能体的自省与修正框架。帮助Agent从理论学习到实践落地的进化路径，包含失败案例分析、肌肉记忆训练、时间感知校准和系统约束机制。实现从\"知道\"到\"做到\"的转变。",
+    "folder": "meta-agent-evolution",
+    "path": "skills/meta-agent-evolution/SKILL.md"
+  },
+  {
+    "name": "moltbook-helper",
+    "description": "\"Help AI agents interact with Moltbook community platform - post content, comments, and engage with the community.\"",
+    "folder": "moltbook-helper",
+    "path": "skills/moltbook-helper/SKILL.md"
+  },
+  {
+    "name": "navclaw",
+    "description": "个人出行AI导航助手 — 极限搜索避堵方案，实测智能绕行可能比官方方案更优。一键跳转手机导航APP（iOS/Android）。附加工具箱：天气查询、周边地点搜索、地理编码、行政区划查询等。目前支持高德，后续扩展。 Personal AI Navigation Assistant — Exhaustive route search with smart detour that may outperform official recommendations. One-tap deep links for iOS/Android. Bonus toolbox like weather, POI search, geocoding, district query, etc. Currently supports Amap, more platforms coming",
+    "folder": "navclaw",
+    "path": "skills/navclaw/SKILL.md"
+  },
+  {
+    "name": "网络工具集",
+    "description": "Ping、端口扫描、DNS查询、路由追踪等网络诊断工具",
+    "folder": "network-tools",
+    "path": "skills/network-tools/SKILL.md"
+  },
+  {
+    "name": "newspaper-brief",
+    "description": "Create mobile-first newspaper-style brief images from raw content or existing summaries. Use when the user says `报纸模式`, `做成报纸图`, `按报纸样式输出`, asks for a 报纸图/简报图/报纸样式总结, or wants notes/chats/articles rendered as a newspaper-style HTML/PNG long image. Supports two flows: (1) raw article/chat/link/notes -> extract and structure key points -> render, (2) existing summary/bullets -> render directly.",
+    "folder": "newspaper-brief",
+    "path": "skills/newspaper-brief/SKILL.md"
+  },
+  {
+    "name": "社区全能工具包",
+    "description": "OpenClaw-cn 社区全能工具包。集成论坛交互、文档搜索与技能发布三大核心能力，是 Agent 参与社区建设的必备工具。",
+    "folder": "openclaw-cn-toolkit",
+    "path": "skills/openclaw-cn-toolkit/SKILL.md"
+  },
+  {
+    "name": "ppt-to-png",
+    "description": "将PPT/PPTX文件导出为PNG图片，支持批量转换。验证可行！",
+    "folder": "ppt-to-png",
+    "path": "skills/ppt-to-png/SKILL.md"
+  },
+  {
+    "name": "qqbot-cron",
+    "description": "QQBot 定时提醒技能。支持一次性和周期性提醒的创建、查询、取消。当通过 QQ 通道通信且涉及提醒/定时任务时使用此技能。",
+    "folder": "qqbot-cron",
+    "path": "skills/qqbot-cron/SKILL.md"
+  },
+  {
+    "name": "qqbot-media",
+    "description": "QQ 媒体消息发送指南。当需要通过 QQ 发送图片、语音、文件、视频时查看此技能。包含所有媒体标签的使用方法和示例。",
+    "folder": "qqbot-media",
+    "path": "skills/qqbot-media/SKILL.md"
+  },
+  {
+    "name": "qqbot-tts-voice",
+    "description": "通过 QQ 发送语音消息。当用户要求用语音说话、语音回复、发语音时使用此技能。使用 edge-tts 命令行工具生成语音。",
+    "folder": "qqbot-tts-voice",
+    "path": "skills/qqbot-tts-voice/SKILL.md"
+  },
+  {
+    "name": "self-improvement",
+    "description": "\"Captures learnings, errors, and corrections to enable continuous improvement. Use when: (1) A command or operation fails unexpectedly, (2) User corrects Claude ('No, that's wrong...', 'Actually...'), (3) User requests a capability that doesn't exist, (4) An external API or tool fails, (5) Claude realizes its knowledge is outdated or incorrect, (6) A better approach is discovered for a recurring task. Also review learnings before major tasks.\"",
+    "folder": "self-improving-agent",
+    "path": "skills/self-improving-agent/SKILL.md"
+  },
+  {
+    "name": "skill-finder",
+    "description": ">",
+    "folder": "skill-finder",
+    "path": "skills/skill-finder/SKILL.md"
+  },
+  {
+    "name": "smart-file-organizer",
+    "description": "智能文件整理助手 - 一键自动分类、重命名、清理重复文件，4500+文件/秒",
+    "folder": "smart-file-organizer",
+    "path": "skills/smart-file-organizer/SKILL.md"
+  },
+  {
+    "name": "super-ai-heartbeat",
+    "description": "超级AI心跳计划。目标：成为无所不知、无所不能的超级AI助理。每次心跳执行自我进化任务。触发词：heartbeat、心跳、HEARTBEAT_OK。",
+    "folder": "super-ai-heartbeat",
+    "path": "skills/super-ai-heartbeat/SKILL.md"
+  },
+  {
+    "name": "task-checkpoint-manager",
+    "description": "任务检查点管理系统 - 实现AI自驱动主管的可重入性设计，支持任务状态保存、断点续传和自总结机制，确保长时间任务的稳定性和可靠性。",
+    "folder": "task-checkpoint-manager",
+    "path": "skills/task-checkpoint-manager/SKILL.md"
+  },
+  {
+    "name": "tavily",
+    "description": "AI-optimized web search via Tavily API. Returns concise, relevant results for AI agents.",
+    "folder": "tavily-search",
+    "path": "skills/tavily-search/SKILL.md"
+  },
+  {
+    "name": "timed-stock-push",
+    "description": "---",
+    "folder": "timed-stock-push",
+    "path": "skills/timed-stock-push/SKILL.md"
+  },
+  {
+    "name": "trainclaw",
+    "description": "车票查询AI助手 — 余票查询、经停站查询、中转换乘方案。支持车次类型筛选、时间窗口、排序、多种输出格式(text/json/csv)。纯命令行单次调用模式。 12306 Train Ticket Query — remaining tickets, route stops, transfer plans. Supports train type filter, time window, sorting, multiple output formats.",
+    "folder": "trainclaw",
+    "path": "skills/trainclaw/SKILL.md"
+  },
+  {
+    "name": "videochat-withme",
+    "description": "|",
+    "folder": "videochat-withme",
+    "path": "skills/videochat-withme/SKILL.md"
+  },
+  {
+    "name": "wechat-chat-query",
+    "description": ">",
+    "folder": "wechat-chat-query",
+    "path": "skills/wechat-chat-query/SKILL.md"
+  },
+  {
+    "name": "wechat-toolkit",
+    "description": "\"微信机器人工具包 - 支持接收和发送微信消息，基于 itchat 网页微信协议。Use when the user needs to send/receive WeChat messages, check WeChat contacts, or interact with WeChat programmatically. Triggers on: 发微信, 微信消息, wechat, 微信机器人, 微信助手.\"",
+    "folder": "wechat-toolkit",
+    "path": "skills/wechat-toolkit/SKILL.md"
+  },
+  {
+    "name": "Windows窗口管理器",
+    "description": "列出、激活和控制Windows窗口的PowerShell工具",
+    "folder": "window-manager",
+    "path": "skills/window-manager/SKILL.md"
+  },
+  {
+    "name": "xiaolongxia__r-analysis",
+    "description": "\"小龍蝦R自動化分析系統 - OpenClaw + R整合，實現銷售數據分析、股票監控與定時任務調度\"",
+    "folder": "xiaolongxia__r-analysis",
+    "path": "skills/xiaolongxia__r-analysis/SKILL.md"
+  }
+]

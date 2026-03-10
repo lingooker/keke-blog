@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Storytelling: 视觉叙事 - 林海</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html">首页</a> /
+            <a href="../papers.html">论文</a> /
+            <span>Visual Storytelling 2025</span>
+        </nav>
+
+        <article class="paper-detail-page">
+            <header class="paper-header">
+                <div class="paper-badge">ICASSP 2025</div>
+                <h1>Efficient Visual Storytelling through Descriptive Words Distillation and Dynamic Decoding</h1>
+                <div class="paper-authors">
+                    <strong>作者：</strong>Zixuan Xiong, Hai Lin, Li Bai, et al.
+                </div>
+                <div class="paper-tags">
+                    <span class="tag">视觉叙事</span>
+                    <span class="tag">词汇蒸馏</span>
+                    <span class="tag">动态解码</span>
+                    <span class="tag">ICASSP 2025</span>
+                </div>
+            </header>
+
+            <section class="paper-section">
+                <h2>📖 研究背景</h2>
+                <p>视觉叙事（Visual Storytelling）要求模型根据图像序列生成连贯的故事，是多模态理解与生成的重要任务。现有方法存在以下挑战：</p>
+                <ul>
+                    <li><strong>描述冗余</strong>：生成内容重复、缺乏重点</li>
+                    <li><strong>叙事不连贯</strong>：故事逻辑性差，缺乏情节发展</li>
+                    <li><strong>效率低下</strong>：生成速度慢，难以实时应用</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🎯 主要贡献</h2>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-number">1</div>
+                        <div class="contribution-content">
+                            <h3>描述性词汇蒸馏</h3>
+                            <p>从图像中提取关键描述性词汇，减少冗余信息，聚焦核心内容。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">2</div>
+                        <div class="contribution-content">
+                            <h3>动态解码机制</h3>
+                            <p>根据叙事上下文动态调整生成策略，确保故事连贯性和多样性。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">3</div>
+                        <div class="contribution-content">
+                            <h3>效率提升</h3>
+                            <p>显著提高生成速度，同时保持高质量的叙事效果。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="paper-section">
+                <h2>📊 实验结果</h2>
+                <p>实验结果表明：</p>
+                <ul>
+                    <li>生成质量优于传统视觉叙事方法</li>
+                    <li>生成速度提升30%以上</li>
+                    <li>故事连贯性和多样性显著提高</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🔗 相关资源</h2>
+                <div class="resource-links">
+                    <a href="#" class="resource-link">📄 论文PDF</a>
+                    <a href="#" class="resource-link">💻 代码仓库</a>
+                </div>
+            </section>
+
+            <footer class="paper-footer">
+                <a href="../papers.html" class="back-link">← 返回论文列表</a>
+            </footer>
+        </article>
+    </div>
+
+    <style>
+        .paper-detail-page { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .paper-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #f0f0f0; }
+        .paper-badge { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: bold; margin-bottom: 1rem; }
+        .paper-header h1 { font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .paper-authors { color: #666; margin-bottom: 1rem; }
+        .paper-tags { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .tag { background: #f0f0f0; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem; }
+        .paper-section { margin-bottom: 2rem; }
+        .paper-section h2 { font-size: 1.5rem; color: #667eea; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #667eea; }
+        .paper-section p, .paper-section ul { color: #555; line-height: 1.8; margin-bottom: 1rem; }
+        .paper-section ul { margin-left: 1.5rem; }
+        .paper-section li { margin-bottom: 0.5rem; }
+        .contribution-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contribution-item { display: flex; gap: 1rem; background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #667eea; }
+        .contribution-number { font-size: 2rem; font-weight: bold; color: #667eea; min-width: 50px; }
+        .contribution-content h3 { font-size: 1.1rem; color: #333; margin: 0 0 0.5rem 0; }
+        .contribution-content p { margin: 0; }
+        .resource-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .resource-link { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.75rem 1.5rem; border-radius: 20px; text-decoration: none; font-weight: 500; transition: all 0.3s; }
+        .resource-link:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        .paper-footer { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #f0f0f0; }
+        .back-link { color: #667eea; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .back-link:hover { color: #764ba2; }
+    </style>
+</body>
+</html>

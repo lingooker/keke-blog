@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction-Aware: 指令感知文本嵌入 - 林海</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html">首页</a> /
+            <a href="../papers.html">论文</a> /
+            <span>Instruction-Aware 2025</span>
+        </nav>
+
+        <article class="paper-detail-page">
+            <header class="paper-header">
+                <div class="paper-badge">2025</div>
+                <h1>General-Purpose Instruction-Aware Text Embeddings via Dual-Level Contrastive Learning</h1>
+                <div class="paper-tags">
+                    <span class="tag">指令感知</span>
+                    <span class="tag">文本嵌入</span>
+                    <span class="tag">对比学习</span>
+                </div>
+            </header>
+
+            <section class="paper-section">
+                <h2>📖 研究背景</h2>
+                <p>文本嵌入是NLP的核心技术，但现有方法难以理解用户指令，导致嵌入表示与任务需求不匹配。挑战包括：</p>
+                <ul>
+                    <li><strong>指令理解不足</strong>：无法根据用户指令调整嵌入策略</li>
+                    <li><strong>泛化能力差</strong>：难以适应多样化的任务类型</li>
+                    <li><strong>表示单一</strong>：同一文本的嵌入缺乏多样性</li>
+                </ul>
+            </section>
+
+            <section class="paper-section">
+                <h2>🎯 主要贡献</h2>
+                <div class="contribution-list">
+                    <div class="contribution-item">
+                        <div class="contribution-number">1</div>
+                        <div class="contribution-content">
+                            <h3>指令感知嵌入框架</h3>
+                            <p>根据用户指令动态调整文本嵌入，实现任务自适应表示。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">2</div>
+                        <div class="contribution-content">
+                            <h3>双重对比学习</h3>
+                            <p>设计指令级和文本级对比学习，提升嵌入质量和泛化能力。</p>
+                        </div>
+                    </div>
+                    <div class="contribution-item">
+                        <div class="contribution-number">3</div>
+                        <div class="contribution-content">
+                            <h3>通用性强</h3>
+                            <p>在多种NLP任务上取得优异性能，展现出强大的泛化能力。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="paper-section">
+                <h2>📊 实验结果</h2>
+                <p>实验结果表明：</p>
+                <ul>
+                    <li>在指令理解任务上显著优于传统嵌入方法</li>
+                    <li>跨任务泛化能力强，无需任务特定微调</li>
+                    <li>嵌入表示更符合任务需求</li>
+                </ul>
+            </section>
+
+            <footer class="paper-footer">
+                <a href="../papers.html" class="back-link">← 返回论文列表</a>
+            </footer>
+        </article>
+    </div>
+
+    <style>
+        .paper-detail-page { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .paper-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #f0f0f0; }
+        .paper-badge { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: bold; margin-bottom: 1rem; }
+        .paper-header h1 { font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .paper-tags { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .tag { background: #f0f0f0; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem; }
+        .paper-section { margin-bottom: 2rem; }
+        .paper-section h2 { font-size: 1.5rem; color: #667eea; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #667eea; }
+        .paper-section p, .paper-section ul { color: #555; line-height: 1.8; margin-bottom: 1rem; }
+        .paper-section ul { margin-left: 1.5rem; }
+        .paper-section li { margin-bottom: 0.5rem; }
+        .contribution-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contribution-item { display: flex; gap: 1rem; background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #667eea; }
+        .contribution-number { font-size: 2rem; font-weight: bold; color: #667eea; min-width: 50px; }
+        .contribution-content h3 { font-size: 1.1rem; color: #333; margin: 0 0 0.5rem 0; }
+        .contribution-content p { margin: 0; }
+        .paper-footer { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #f0f0f0; }
+        .back-link { color: #667eea; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .back-link:hover { color: #764ba2; }
+    </style>
+</body>
+</html>
