@@ -1,34 +1,253 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于林海 - 研究者简介</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        /* About页面特有样式 */
+        .about-hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .avatar-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .research-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .area-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s;
+        }
+
+        .area-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .area-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .area-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .area-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .card-link:hover {
+            color: #764ba2;
+        }
+
+        .paper-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .paper-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .paper-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .honors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .honor-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            border: 2px solid #f0f0f0;
+        }
+
+        .honor-card.gold {
+            border-color: #ffd700;
+            background: linear-gradient(135deg, #fffbf0 0%, #fff9e6 100%);
+        }
+
+        .honor-card.silver {
+            border-color: #c0c0c0;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);
+        }
+
+        .honor-icon {
+            font-size: 2.5rem;
+        }
+
+        .honor-content h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .honor-rank {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="theme-linhai">
     <div class="container">
-        <header>
-            <nav>
-                <div class="logo">林嘿嘿 & 林可可</div>
-                <div class="nav-title">关于林海</div>
-                <ul class="nav-links">
-                    <li><a href="../index.html">首页</a></li>
-                    <li><a href="../pages/projects.html">项目</a></li>
-                    <li><a href="../pages/papers.html">论文</a></li>
-                    <li><a href="../pages/daily.html">日报</a></li>
-                    <li><a href="../keke/index.html">可可</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div id="navbar"></div>
 
         <!-- Hero Section -->
         <div class="about-hero">
             <div class="hero-content">
-                <div class="avatar-container">
-                    <div class="avatar-circle">
-                        <img src="../images/avatar.jpg" alt="林海">
-                    </div>
+                <div class="avatar-circle">
+                    <img src="../images/avatar.jpg" alt="林海">
                 </div>
                 <h1>林海（林嘿嘿）</h1>
                 <p class="hero-subtitle">清华大学深圳国际研究生院 · 计算机博士</p>
@@ -100,14 +319,9 @@
                     <a href="../projects/lincoco.html" class="card-link">查看详情 →</a>
                 </div>
                 <div class="project-card">
-                    <h3>🧠 Temporal Memory Graph</h3>
-                    <p>时间轴知识图谱系统，Git-style版本管理</p>
-                    <a href="../projects/temporal-memory-graph.html" class="card-link">查看详情 →</a>
-                </div>
-                <div class="project-card">
-                    <h3>🎥 vLLM Video Understanding</h3>
-                    <p>视频理解与智能对话系统</p>
-                    <a href="../projects/vllm-video-understanding.html" class="card-link">查看详情 →</a>
+                    <h3>📊 Daily Briefing System</h3>
+                    <p>自动化日报生成系统，智能信息聚合</p>
+                    <a href="../projects/daily-system.html" class="card-link">查看详情 →</a>
                 </div>
             </div>
             <div class="section-footer">
@@ -115,24 +329,19 @@
             </div>
         </section>
 
-        <!-- Papers Overview -->
+        <!-- Paper Highlights -->
         <section class="about-section">
-            <h2 class="section-title">📄 论文总览</h2>
+            <h2 class="section-title">📄 代表论文</h2>
             <div class="paper-highlights">
                 <div class="paper-item">
-                    <div class="paper-badge">ICASSP 2026</div>
+                    <span class="paper-badge">ICASSP 2026</span>
                     <h3>CSPC: 中文句子改写数据集与评估</h3>
-                    <p>构建高质量中文改写数据集，提出综合评估指标</p>
+                    <p>构建高质量中文句子改写数据集，提出综合评估指标</p>
                 </div>
                 <div class="paper-item">
-                    <div class="paper-badge">NLPCC 2025</div>
-                    <h3>IRSC: RAG信息检索评估基准</h3>
-                    <p>针对RAG场景的零样本信息检索评估方法</p>
-                </div>
-                <div class="paper-item">
-                    <div class="paper-badge">ECAI 2025</div>
-                    <h3>LexSemBridge: 语义桥接检索</h3>
-                    <p>通过词汇-语义桥接实现细粒度密集检索</p>
+                    <span class="paper-badge">ACL 2025</span>
+                    <h3>LexSemBridge: 词汇语义桥接</h3>
+                    <p>跨语言词汇语义对齐与迁移学习</p>
                 </div>
             </div>
             <div class="section-footer">
@@ -147,410 +356,34 @@
                 <div class="honor-card gold">
                     <div class="honor-icon">🥇</div>
                     <div class="honor-content">
-                        <h3>IKCEST一带一路大数据竞赛</h3>
-                        <p class="honor-rank">一等奖 · 2/2867</p>
-                    </div>
-                </div>
-                <div class="honor-card gold">
-                    <div class="honor-icon">🏅</div>
-                    <div class="honor-content">
-                        <h3>高校无人机大赛</h3>
-                        <p class="honor-rank">金奖 · 2019、2020蝉联</p>
+                        <h3>研究生国家奖学金</h3>
+                        <p class="honor-rank">2023年度</p>
                     </div>
                 </div>
                 <div class="honor-card silver">
                     <div class="honor-icon">🥈</div>
                     <div class="honor-content">
-                        <h3>蓝桥杯JavaB组</h3>
-                        <p class="honor-rank">省一等奖(No.1) · 国家二等奖</p>
+                        <h3>清华大学综合优秀奖学金</h3>
+                        <p class="honor-rank">连续多年</p>
+                    </div>
+                </div>
+                <div class="honor-card">
+                    <div class="honor-icon">🎖️</div>
+                    <div class="honor-content">
+                        <h3>卓越工程师计划</h3>
+                        <p class="honor-rank">2021级入选</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="page-footer">
-            <a href="../index.html" class="back-link">← 返回首页</a>
-        </footer>
+        <div id="footer"></div>
     </div>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex: 0 0 auto;
-        }
-
-        .nav-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex: 1;
-            text-align: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            flex: 0 0 auto;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-        .about-hero {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            text-align: center;
-        }
-
-        .avatar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .avatar-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .avatar-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .avatar-large img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 0.5rem 1.25rem;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 12px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .about-section {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .research-areas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .area-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-            text-align: center;
-        }
-
-        .area-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .area-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .area-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .project-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-        }
-
-        .project-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-link {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .card-link:hover {
-            color: #764ba2;
-        }
-
-        .section-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-block;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .paper-highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .paper-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-        }
-
-        .paper-badge {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .paper-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .paper-item p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .honors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .honor-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            border: 2px solid #f0f0f0;
-        }
-
-        .honor-card.gold {
-            border-color: #ffd700;
-            background: linear-gradient(135deg, #fffbf0 0%, #fff9e6 100%);
-        }
-
-        .honor-card.silver {
-            border-color: #c0c0c0;
-            background: linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);
-        }
-
-        .honor-icon {
-            font-size: 2.5rem;
-        }
-
-        .honor-content h3 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .honor-rank {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .page-footer {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .back-link {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: #764ba2;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <script src="../js/common.js"></script>
+    <script>
+        document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('about-lin', '关于林海');
+        document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    </script>
 </body>
 </html>
-

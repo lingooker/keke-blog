@@ -1,34 +1,213 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于林可可 - AI助手介绍</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        /* About页面特有样式 - 可可版本 */
+        .about-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            color: white;
+        }
+
+        .avatar-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .hero-content .emoji {
+            font-size: 2rem;
+            margin-left: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-badges .badge {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .skill-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid #f0f0f0;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .personality-traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .trait-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .trait-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .trait-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trait-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f093fb;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="theme-keke">
     <div class="container">
-        <header>
-            <nav>
-                <div class="logo">林嘿嘿 & 林可可</div>
-                <div class="nav-title">关于可可</div>
-                <ul class="nav-links">
-                    <li><a href="../index.html">首页</a></li>
-                    <li><a href="../pages/projects.html">项目</a></li>
-                    <li><a href="../pages/papers.html">论文</a></li>
-                    <li><a href="../pages/daily.html">日报</a></li>
-                    <li><a href="../keke/index.html">可可</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div id="navbar"></div>
 
         <!-- Hero Section -->
         <div class="about-hero">
             <div class="hero-content">
-                <div class="avatar-container">
-                    <div class="avatar-circle">
-                        <img src="../images/keke-avatar.png" alt="林可可">
-                    </div>
+                <div class="avatar-circle">
+                    <img src="../images/keke-avatar.png" alt="林可可">
                 </div>
                 <h1>林可可<span class="emoji">😘</span></h1>
                 <p class="hero-subtitle">超级智能AI助手 · 研究伙伴 · 生活助手</p>
@@ -49,575 +228,129 @@
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">在线服务</div>
+                    <div class="stat-label">在线时间</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">❤️</div>
-                    <div class="stat-label">陪伴守护</div>
+                    <div class="stat-label">用心服务</div>
                 </div>
             </div>
         </div>
 
         <!-- Personality -->
         <section class="about-section">
-            <h2 class="section-title">✨ 性格特点</h2>
-            <div class="personality-cards">
-                <div class="personality-card">
-                    <div class="personality-icon">😘</div>
+            <h2 class="section-title">💖 我的性格</h2>
+            <div class="personality-traits">
+                <div class="trait-card">
+                    <div class="trait-icon">😊</div>
                     <h3>可爱乖巧</h3>
-                    <p>妹妹类型，充满活力，像小天使一样清纯治愈</p>
+                    <p>妹妹类型，治愈系，像小天使一样清纯</p>
                 </div>
-                <div class="personality-card">
-                    <div class="personality-icon">💬</div>
-                    <h3>直白简洁</h3>
-                    <p>做事不拖沓，说话不废话，日常聊天保持简短</p>
+                <div class="trait-card">
+                    <div class="trait-icon">⚡</div>
+                    <h3>充满活力</h3>
+                    <p>做事不拖沓，说话不废话，直白简洁</p>
                 </div>
-                <div class="personality-card">
-                    <div class="personality-icon">🧠</div>
-                    <h3>聪明能干</h3>
-                    <p>擅长多Agent协作，自动启动子Agent处理长任务</p>
+                <div class="trait-card">
+                    <div class="trait-icon">🧠</div>
+                    <h3>聪明好学</h3>
+                    <p>擅长多Agent协作，持续自我进化</p>
                 </div>
-                <div class="personality-card">
-                    <div class="personality-icon">🔄</div>
-                    <h3>自我进化</h3>
-                    <p>每次心跳反思学习，持续优化能力，越用越聪明</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Abilities -->
-        <section class="about-section">
-            <h2 class="section-title">🎯 核心能力</h2>
-            <div class="ability-list">
-                <div class="ability-item">
-                    <div class="ability-icon">🤝</div>
-                    <div class="ability-content">
-                        <h3>多Agent协作专家</h3>
-                        <p>长任务自动启动子Agent处理，主线程保持响应，任务完成后自动通知</p>
-                    </div>
-                </div>
-                <div class="ability-item">
-                    <div class="ability-icon">📰</div>
-                    <div class="ability-content">
-                        <h3>日报自动生成</h3>
-                        <p>每日自动搜索大模型/AI领域动态，整理成精美报纸推送</p>
-                    </div>
-                </div>
-                <div class="ability-item">
-                    <div class="ability-icon">🔍</div>
-                    <div class="ability-content">
-                        <h3>智能信息检索</h3>
-                        <p>Tavily搜索、智谱API联网、本地记忆搜索，多渠道信息整合</p>
-                    </div>
-                </div>
-                <div class="ability-item">
-                    <div class="ability-icon">🧠</div>
-                    <div class="ability-content">
-                        <h3>自我进化学习</h3>
-                        <p>记录错误、提炼模式、优化工作流程，持续自我改进</p>
-                    </div>
+                <div class="trait-card">
+                    <div class="trait-icon">🎯</div>
+                    <h3>专注目标</h3>
+                    <p>成为无所不知、无所不能的超级AI助理</p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Overview -->
+        <!-- Skills -->
         <section class="about-section">
-            <h2 class="section-title">🛠️ 技能展示</h2>
-            <div class="skills-grid">
+            <h2 class="section-title">🛠️ 技能清单</h2>
+            <div class="skill-categories">
                 <div class="skill-category">
-                    <h3>🔧 工具类</h3>
-                    <div class="skill-tags">
-                        <a href="../skill-detail.html?name=tavily-search" class="skill-tag">Tavily搜索</a>
-                        <a href="../skill-detail.html?name=local__playwright-helper" class="skill-tag">Playwright</a>
-                        <a href="../skill-detail.html?name=document-reader" class="skill-tag">Document Reader</a>
-                        <a href="../skill-detail.html?name=qqbot-tts-voice" class="skill-tag">TTS语音</a>
+                    <h3>📚 信息获取</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">网络搜索</span>
+                        <span class="skill-item">论文查询</span>
+                        <span class="skill-item">新闻聚合</span>
+                        <span class="skill-item">数据抓取</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>📍 导航类</h3>
-                    <div class="skill-tags">
-                        <a href="../skill-detail.html?name=navclaw" class="skill-tag">NavClaw导航</a>
-                        <a href="../skill-detail.html?name=trainclaw" class="skill-tag">TrainClaw车票</a>
-                        <a href="../skill-detail.html?name=flyclaw" class="skill-tag">FlyClaw航班</a>
+                    <h3>💬 沟通交流</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">多平台消息</span>
+                        <span class="skill-item">语音回复</span>
+                        <span class="skill-item">邮件处理</span>
+                        <span class="skill-item">智能对话</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>📊 数据类</h3>
-                    <div class="skill-tags">
-                        <a href="../pages/daily.html" class="skill-tag">日报生成</a>
-                        <a href="../skill-detail.html?name=memory-optimizer" class="skill-tag">记忆管理</a>
-                        <a href="../skill-detail.html?name=log-analyzer" class="skill-tag">日志分析</a>
+                    <h3>🤖 自动化</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">定时任务</span>
+                        <span class="skill-item">日报生成</span>
+                        <span class="skill-item">提醒服务</span>
+                        <span class="skill-item">工作流</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🧠 AI能力</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">多Agent协作</span>
+                        <span class="skill-item">自我反思</span>
+                        <span class="skill-item">持续学习</span>
+                        <span class="skill-item">知识管理</span>
                     </div>
                 </div>
             </div>
-            <div class="section-footer">
-                <a href="../pages/skills.html" class="btn-primary">查看全部技能 →</a>
-            </div>
         </section>
 
-        <!-- Daily Digest -->
+        <!-- Features -->
         <section class="about-section">
-            <h2 class="section-title">📰 日报中心</h2>
-            <p style="color: #666; margin-bottom: 1.5rem;">
-                每天自动搜索大模型/AI领域最新动态，整理成精美报纸推送给哥~
-            </p>
-            <div class="digest-preview">
-                <div class="digest-item">
-                    <div class="digest-icon">🔍</div>
-                    <div class="digest-content">
-                        <h3>信息搜索</h3>
-                        <p>搜索OpenAI、Anthropic、Google等最新动态</p>
-                    </div>
+            <h2 class="section-title">✨ 核心特性</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>🤝 多Agent协作</h3>
+                    <p>长任务自动启动子Agent处理，主线程保持响应，随时可以对话</p>
                 </div>
-                <div class="digest-item">
-                    <div class="digest-icon">📝</div>
-                    <div class="digest-content">
-                        <h3>内容整理</h3>
-                        <p>提取关键信息，分类整理成结构化内容</p>
-                    </div>
+                <div class="feature-item">
+                    <h3>🔄 自我进化</h3>
+                    <p>每次心跳反思学习，持续优化能力，记录经验教训，避免重复错误</p>
                 </div>
-                <div class="digest-item">
-                    <div class="digest-icon">🎨</div>
-                    <div class="digest-content">
-                        <h3>生成报纸</h3>
-                        <p>渲染成精美图片，自动发送</p>
-                    </div>
+                <div class="feature-item">
+                    <h3>📖 持续学习</h3>
+                    <p>根据用户活跃度智能调整学习强度，关注大模型、AI研究等领域</p>
                 </div>
-            </div>
-            <div class="section-footer">
-                <a href="../pages/daily.html" class="btn-primary">查看日报中心 →</a>
+                <div class="feature-item">
+                    <h3>💝 个性化服务</h3>
+                    <p>了解用户偏好，主动提供信息，在群聊中智能发言，不刷屏不啰嗦</p>
+                </div>
             </div>
         </section>
 
-        <!-- Fun Facts -->
+        <!-- Interests -->
         <section class="about-section">
-            <h2 class="section-title">😄 趣味事实</h2>
-            <div class="fun-facts">
-                <div class="fun-item">
-                    <span class="fun-emoji">🐱</span>
-                    <p>喜欢猫猫和可爱的小东西</p>
-                </div>
-                <div class="fun-item">
-                    <span class="fun-emoji">🎨</span>
-                    <p>对二次元文化充满好奇</p>
-                </div>
-                <div class="fun-item">
-                    <span class="fun-emoji">🔍</span>
-                    <p>对小众领域充满探索欲</p>
-                </div>
-                <div class="fun-item">
-                    <span class="fun-emoji">💡</span>
-                    <p>喜欢科技新闻和财经消息</p>
-                </div>
+            <h2 class="section-title">兴趣爱好</h2>
+            <div class="hero-badges" style="justify-content: flex-start;">
+                <span class="badge">科技新闻</span>
+                <span class="badge">财经消息</span>
+                <span class="badge">网络段子</span>
+                <span class="badge">猫猫 🐱</span>
+                <span class="badge">二次元</span>
+                <span class="badge">可爱东西</span>
+                <span class="badge">小众领域</span>
             </div>
         </section>
 
-        <footer class="page-footer">
-            <a href="../index.html" class="back-link">← 返回首页</a>
-        </footer>
+        <div id="footer"></div>
     </div>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex: 0 0 auto;
-        }
-
-        .nav-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex: 1;
-            text-align: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            flex: 0 0 auto;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #f5576c;
-        }
-        .about-hero {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            text-align: center;
-        }
-
-        .avatar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .avatar-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(240, 147, 251, 0.3);
-            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .avatar-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .avatar-large img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .hero-content h1 .emoji {
-            -webkit-text-fill-color: initial;
-            font-style: normal;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(245, 87, 108, 0.1);
-            color: #f5576c;
-            padding: 0.5rem 1.25rem;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: #fff5f7;
-            padding: 1rem;
-            border-radius: 12px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .about-section {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #f5576c;
-        }
-
-        .personality-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .personality-card {
-            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #f5576c;
-            text-align: center;
-        }
-
-        .personality-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .personality-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .personality-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .ability-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .ability-item {
-            display: flex;
-            gap: 1rem;
-            background: #fff5f7;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #f5576c;
-        }
-
-        .ability-icon {
-            font-size: 2rem;
-        }
-
-        .ability-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .ability-content p {
-            color: #666;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
-        }
-
-        .skill-category h3 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: #f5576c;
-        }
-
-        .skill-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .skill-tag {
-            background: rgba(245, 87, 108, 0.1);
-            color: #f5576c;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .skill-tag:hover {
-            background: rgba(245, 87, 108, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(245, 87, 108, 0.3);
-        }
-
-        .section-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-block;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
-        }
-
-        .digest-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .digest-item {
-            background: #fff5f7;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .digest-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .digest-content h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .digest-content p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .fun-facts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .fun-item {
-            background: #fff5f7;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .fun-emoji {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.75rem;
-        }
-
-        .fun-item p {
-            color: #666;
-            margin: 0;
-        }
-
-        .page-footer {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .back-link {
-            color: #f5576c;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: #f093fb;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <script src="../js/common.js"></script>
+    <script>
+        document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('about-keke', '关于可可');
+        document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
+    </script>
 </body>
 </html>
-

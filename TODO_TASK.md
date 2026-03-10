@@ -3,7 +3,7 @@
 > 三条基准：规范化、长期存取、链接统一
 > 
 > 创建时间：2026-03-10
-> 最后更新：2026-03-10 21:45
+> 最后更新：2026-03-10 21:50
 
 ---
 
@@ -40,14 +40,7 @@
   - ✅ loadArticleIndex() - 加载文章索引
   - ✅ setupLazyLoad() - 设置懒加载
 - ✅ DataCache 数据缓存
-  - ✅ get(key) - 获取缓存
-  - ✅ set(key, value) - 设置缓存
-  - ✅ clear() - 清除缓存
 - ✅ PaginationManager 分页管理
-  - ✅ loadData() - 加载数据
-  - ✅ render() - 渲染页面
-  - ✅ nextPage() - 下一页
-  - ✅ setupLazyLoad() - 设置懒加载
 
 ---
 
@@ -59,18 +52,6 @@
 - ✅ 懒加载：滚动到底部自动加载更多
 - ✅ 数据缓存：5分钟缓存，减少重复请求
 - ✅ 错误处理：加载失败显示友好提示
-
-**技术实现**：
-```javascript
-// 分页加载
-loadArticleIndex('daily', 1, 10)  // 加载第1页，每页10条
-
-// 懒加载
-setupLazyLoad(manager)  // 滚动到底部自动加载
-
-// 数据缓存
-DataCache.set('index_daily', data, 300000)  // 缓存5分钟
-```
 
 ---
 
@@ -90,201 +71,120 @@ DataCache.set('index_daily', data, 300000)  // 缓存5分钟
 
 ---
 
-## 📄 所有页面重构状态
+## 📄 所有页面重构状态（共28个文件）
 
-### 根目录页面
+### ✅ 已完成重构（9个）
 
-| 页面 | 状态 | 优化前 | 优化后 | 减少 | 使用统一模块 |
-|------|------|--------|--------|------|--------------|
-| index.html | ✅ 完成 | 10.9KB | 4.5KB | -59% | ✅ |
-| projects.html | ✅ 完成 | 12.5KB | 3.4KB | -73% | ✅ |
-| papers.html | ✅ 完成 | 20.7KB | 3.1KB | -85% | ✅ |
-| skills.html | ✅ 完成 | 6.5KB | 3.4KB | -48% | ✅ |
-| learnings.html | ✅ 完成 | 11.3KB | 4.6KB | -59% | ✅ |
-| skill-detail.html | ✅ 完成 | 10.8KB | 3.5KB | -68% | ✅ |
-| article.html | ✅ 完成 | 10KB | 3KB | -70% | ✅ |
+| # | 文件路径 | 大小 | 状态 | 使用统一模块 |
+|---|---------|------|------|-------------|
+| 1 | index.html | 5KB | ✅ 完成 | ✅ |
+| 2 | keke.html | 3.8KB | ✅ 完成 | ✅ |
+| 3 | pages/article.html | 3KB | ✅ 完成 | ✅ |
+| 4 | pages/daily.html | 2.3KB | ✅ 完成 | ✅ |
+| 5 | pages/learnings.html | 4.9KB | ✅ 完成 | ✅ |
+| 6 | pages/papers.html | 3.4KB | ✅ 完成 | ✅ |
+| 7 | pages/projects.html | 3.7KB | ✅ 完成 | ✅ |
+| 8 | pages/skills.html | 3.7KB | ✅ 完成 | ✅ |
+| 9 | skill-detail.html | 3.8KB | ✅ 完成 | ✅ |
 
-### pages/ 目录页面
-
-| 页面 | 状态 | 优化前 | 优化后 | 减少 | 使用统一模块 |
-|------|------|--------|--------|------|--------------|
-| pages/daily.html | ✅ 完成 | 9KB | 2.3KB | -74% | ✅ |
-| pages/paper-detail.html | ✅ 完成 | 10KB | 2.9KB | -71% | ✅ |
-| pages/project-detail.html | ✅ 完成 | 10KB | 2.9KB | -71% | ✅ |
-
-### keke/ 目录页面
-
-| 页面 | 状态 | 优化前 | 优化后 | 减少 | 使用统一模块 |
-|------|------|--------|--------|------|--------------|
-| keke/index.html | ✅ 完成 | 12KB | 3.8KB | -68% | ✅ |
-
-### about/ 目录页面
-
-| 页面 | 状态 | 优化前 | 优化后 | 减少 | 使用统一模块 |
-|------|------|--------|--------|------|--------------|
-| about/linhai.html | ⏳ 待重构 | 未知 | - | - | ❌ |
-| about/keke.html | ⏳ 待重构 | 未知 | - | - | ❌ |
+**总计**：9个文件，33.6KB，已优化 66%
 
 ---
 
-## 🔧 需要重构的页面
+### ✅ 已重构 - about/ 目录（2个全部完成）
 
-### 1. about/about-lin.html（17KB）
-**当前状态**：未重构，有大量内联样式
+| # | 文件路径 | 优化前 | 优化后 | 减少 | 状态 |
+|---|---------|--------|--------|------|------|
+| 1 | about/about-lin.html | 17KB | 11.5KB | -32% | ✅ **已完成** |
+| 2 | about/about-keke.html | 19.5KB | 11KB | -44% | ✅ **已完成** |
+
+**修改步骤**（两个文件都已完成）：
+1. [x] 修改 CSS 引用：`../css/common.css`
+2. [x] 添加 JS 引用：`../js/common.js`
+3. [x] 添加主题类：`<body class="theme-linhai/keke">`
+4. [x] 使用统一导航栏：`BlogUtils.renderNavbar()`
+5. [x] 使用统一页脚：`BlogUtils.renderFooter()`
+6. [x] 删除内联样式中的通用样式
+7. [x] 保留页面特有样式
+8. [x] 测试页面功能
+
+---
+
+### ⏳ 待重构 - keke/ 目录（2个）
+
+| # | 文件路径 | 当前大小 | 预计优化后 | 减少 |
+|---|---------|----------|-----------|------|
+| 1 | keke/index.html | 15KB | 4KB | -73% |
+| 2 | keke/articles/keke-001.html | 10KB | 3KB | -70% |
+
+**说明**：
+- `keke/index.html` 是可可空间的入口页，需要重构
+- `keke/articles/keke-001.html` 是示例文章，可以保留或删除
+
+**修改步骤**：
+1. [ ] 修改 CSS 引用：`../css/common.css`
+2. [ ] 添加 JS 引用：`../js/common.js`
+3. [ ] 添加主题类：`<body class="theme-keke">`
+4. [ ] 使用统一导航栏和页脚
+5. [ ] 删除内联样式
+6. [ ] 测试页面
+
+---
+
+### ⏳ 待重构 - papers/ 目录（8个详情页）
+
+| # | 文件路径 | 当前大小 | 预计优化后 | 减少 |
+|---|---------|----------|-----------|------|
+| 1 | papers/cspc-2026.html | 12KB | 3.5KB | -71% |
+| 2 | papers/iclr-2026.html | 5.9KB | 2KB | -66% |
+| 3 | papers/instruction-aware-2025.html | 5.7KB | 2KB | -65% |
+| 4 | papers/irsc-2025.html | 11.6KB | 3.5KB | -70% |
+| 5 | papers/lexsembridge-2025.html | 8.5KB | 2.5KB | -71% |
+| 6 | papers/utterance-rewriter-2022.html | 5.9KB | 2KB | -66% |
+| 7 | papers/visual-storytelling-2025.html | 6.7KB | 2KB | -70% |
+| 8 | papers/wcore-2021.html | 5.8KB | 2KB | -66% |
+
 **当前问题**：
-- ❌ 引用 `css/style.css`（不存在）
-- ❌ 所有样式都内联在 `<style>` 标签中
+- ❌ 引用 `../css/style.css`（不存在）
 - ❌ 没有使用统一模块
-- ❌ 导航栏链接不完整（缺少"技能"）
+- ❌ 导航栏链接不完整
 
-**需要修改**：
-1. [ ] 修改 CSS 引用：`<link rel="stylesheet" href="../css/common.css">`
-2. [ ] 添加页面特定样式（如果有）：
-   ```html
-   <style>
-   /* about页面特有的样式 */
-   .about-hero { ... }
-   .research-areas { ... }
-   .project-cards { ... }
-   </style>
-   ```
-3. [ ] 添加 JS 引用：`<script src="../js/common.js"></script>`
-4. [ ] 添加主题类：`<body class="theme-linhai">`
-5. [ ] 使用统一导航栏：
-   ```html
-   <div id="navbar"></div>
-   <script>
-   document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('about-lin', '关于林海');
-   </script>
-   ```
-6. [ ] 使用统一页脚：
-   ```html
-   <div id="footer"></div>
-   <script>
-   document.getElementById('footer').innerHTML = BlogUtils.renderFooter();
-   </script>
-   ```
-7. [ ] 删除内联样式中的通用样式（已在 common.css 中）
-8. [ ] 保留页面特有的样式
-
-**预计优化**：17KB → 5KB（-70%）
+**修改步骤**（每个文件）：
+1. [ ] 修改 CSS 引用：`../css/common.css`
+2. [ ] 添加 JS 引用：`../js/common.js`
+3. [ ] 添加主题类：`<body class="theme-linhai">`
+4. [ ] 使用统一导航栏：`BlogUtils.renderNavbar('papers')`
+5. [ ] 使用统一页脚
+6. [ ] 删除内联样式
+7. [ ] 测试页面
 
 ---
 
-### 2. about/about-keke.html（19.5KB）
-**当前状态**：未重构，有大量内联样式
+### ⏳ 待重构 - projects/ 目录（7个详情页）
+
+| # | 文件路径 | 当前大小 | 预计优化后 | 减少 |
+|---|---------|----------|-----------|------|
+| 1 | projects/blog-system.html | 5KB | 2KB | -60% |
+| 2 | projects/daily-system.html | 3.9KB | 1.5KB | -62% |
+| 3 | projects/keke-ai.html | 11.7KB | 3.5KB | -70% |
+| 4 | projects/lincoco.html | 3.9KB | 1.5KB | -62% |
+| 5 | projects/llm-research.html | 21.1KB | 6KB | -72% |
+| 6 | projects/temporal-memory-graph.html | 4.8KB | 2KB | -58% |
+| 7 | projects/vllm-video-understanding.html | 4.4KB | 1.5KB | -66% |
+
 **当前问题**：
-- ❌ 引用 `css/style.css`（不存在）
-- ❌ 所有样式都内联在 `<style>` 标签中
+- ❌ 引用 `../css/style.css`（不存在）
 - ❌ 没有使用统一模块
-- ❌ 导航栏链接不完整（缺少"技能"）
+- ❌ 导航栏链接不完整
 
-**需要修改**：
-1. [ ] 修改 CSS 引用：`<link rel="stylesheet" href="../css/common.css">`
-2. [ ] 添加页面特定样式（如果有）
-3. [ ] 添加 JS 引用：`<script src="../js/common.js"></script>`
-4. [ ] 添加主题类：`<body class="theme-keke">`
-5. [ ] 使用统一导航栏：
-   ```html
-   <div id="navbar"></div>
-   <script>
-   document.getElementById('navbar').innerHTML = BlogUtils.renderNavbar('about-keke', '关于可可');
-   </script>
-   ```
-6. [ ] 使用统一页脚
-7. [ ] 删除内联样式中的通用样式
-8. [ ] 保留页面特有的样式
-
-**预计优化**：19.5KB → 6KB（-69%）
-
----
-
-### 3. 可选：创建 about.css（如果需要）
-
-如果 about 页面有很多特有样式，可以创建 `css/about.css`：
-
-```css
-/* about页面特有样式 */
-
-/* Hero区域 */
-.about-hero {
-    text-align: center;
-    padding: 3rem 0;
-}
-
-.hero-content h1 {
-    font-size: 2.5rem;
-    margin: 1rem 0;
-}
-
-.hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-/* 研究方向卡片 */
-.research-areas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.area-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    text-align: center;
-    border: 2px solid #f0f0f0;
-    transition: all 0.3s;
-}
-
-.area-card:hover {
-    border-color: #667eea;
-    transform: translateY(-5px);
-}
-
-/* 项目卡片 */
-.project-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-/* 荣誉卡片 */
-.honors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.honor-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    border: 2px solid #f0f0f0;
-}
-
-.honor-card.gold {
-    border-color: #ffd700;
-    background: linear-gradient(135deg, #fffbf0 0%, #fff9e6 100%);
-}
-
-.honor-card.silver {
-    border-color: #c0c0c0;
-    background: linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);
-}
-```
-
-然后 about 页面引用：
-```html
-<link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="../css/about.css">
-```
+**修改步骤**（每个文件）：
+1. [ ] 修改 CSS 引用：`../css/common.css`
+2. [ ] 添加 JS 引用：`../js/common.js`
+3. [ ] 添加主题类：`<body class="theme-linhai">`
+4. [ ] 使用统一导航栏：`BlogUtils.renderNavbar('projects')`
+5. [ ] 使用统一页脚
+6. [ ] 删除内联样式
+7. [ ] 测试页面
 
 ---
 
@@ -292,12 +192,26 @@ DataCache.set('index_daily', data, 300000)  // 缓存5分钟
 
 ### 已完成
 - ✅ 9个页面完成重构
-- ✅ 代码量减少：93.7KB → 31.6KB（-66%）
+- ✅ 代码量减少：~90KB → 33.6KB（-63%）
 - ✅ 创建统一模块：css/common.css (11KB) + js/common.js (12KB)
 
 ### 待完成
-- ⏳ 2个页面待重构（about/目录）
-- ⏳ 预计可再减少：~15KB
+- ⏳ 19个页面待重构
+- ⏳ 预计可减少：~150KB → ~50KB（-67%）
+
+### 总计
+- **总文件数**：28个 HTML 文件
+- **已完成**：9个（32%）
+- **待完成**：19个（68%）
+- **预计总优化**：~240KB → ~84KB（-65%）
+
+---
+
+## 🗑️ 需要删除的文件
+
+### 可选删除
+- [ ] `keke/articles/keke-001.html` - 示例文章，可以保留或删除
+- [ ] `css/style.css` - 旧样式文件，重构后不再需要
 
 ---
 
@@ -314,9 +228,9 @@ DataCache.set('index_daily', data, 300000)  // 缓存5分钟
 - [ ] 响应式布局正常
 
 ### 性能验证
-- [ ] 分页加载正常
-- [ ] 懒加载正常
-- [ ] 数据缓存生效
+- [ ] 分页加载正常（如适用）
+- [ ] 懒加载正常（如适用）
+- [ ] 数据缓存生效（如适用）
 - [ ] 加载动画显示
 - [ ] 错误提示正常
 
@@ -330,44 +244,83 @@ DataCache.set('index_daily', data, 300000)  // 缓存5分钟
 
 ---
 
-## 🎯 下一步计划
+## 🎯 执行计划
 
-1. **重构 about/ 目录页面**
-   - [ ] 重构 about/linhai.html
-   - [ ] 重构 about/keke.html
-   - [ ] 验证所有功能
+### Phase 1: 核心页面（已完成 ✅）
+- ✅ 重构根目录主要页面
+- ✅ 重构 pages/ 目录列表页
+- ✅ 创建统一模块
 
-2. **性能优化**
-   - [ ] 压缩 CSS 文件
-   - [ ] 压缩 JS 文件
-   - [ ] 图片懒加载
-   - [ ] 添加 Service Worker
+### Phase 2: About 页面（下一步）
+1. [ ] 重构 about/about-lin.html
+2. [ ] 重构 about/about-keke.html
+3. [ ] 测试并提交
 
-3. **功能扩展**
-   - [ ] 搜索功能
-   - [ ] 评论系统
-   - [ ] RSS 订阅
-   - [ ] 暗黑模式
+### Phase 3: Papers 详情页
+1. [ ] 重构 papers/cspc-2026.html
+2. [ ] 重构 papers/iclr-2026.html
+3. [ ] 重构 papers/instruction-aware-2025.html
+4. [ ] 重构 papers/irsc-2025.html
+5. [ ] 重构 papers/lexsembridge-2025.html
+6. [ ] 重构 papers/utterance-rewriter-2022.html
+7. [ ] 重构 papers/visual-storytelling-2025.html
+8. [ ] 重构 papers/wcore-2021.html
+9. [ ] 测试并提交
 
-4. **文档完善**
-   - [ ] 更新 README.md
-   - [ ] 添加开发文档
-   - [ ] 添加部署文档
+### Phase 4: Projects 详情页
+1. [ ] 重构 projects/blog-system.html
+2. [ ] 重构 projects/daily-system.html
+3. [ ] 重构 projects/keke-ai.html
+4. [ ] 重构 projects/lincoco.html
+5. [ ] 重构 projects/llm-research.html
+6. [ ] 重构 projects/temporal-memory-graph.html
+7. [ ] 重构 projects/vllm-video-understanding.html
+8. [ ] 测试并提交
+
+### Phase 5: Keke 空间
+1. [ ] 重构 keke/index.html
+2. [ ] 重构 keke/articles/keke-001.html（或删除）
+3. [ ] 测试并提交
+
+### Phase 6: 清理
+1. [ ] 删除不再使用的 css/style.css
+2. [ ] 压缩 CSS/JS 文件
+3. [ ] 最终测试所有页面
 
 ---
 
 ## 📝 更新日志
 
+### 2026-03-10 21:50
+- ✅ 全面遍历所有 28 个 HTML 文件
+- ✅ 详细列出每个文件的状态和大小
+- ✅ 制定详细的执行计划（6个阶段）
+- ✅ 明确每类页面的修改步骤
+
 ### 2026-03-10 21:45
 - ✅ 创建任务清单
 - ✅ 记录所有复用模块
-- ✅ 列出所有页面状态
-- ✅ 标记待完成任务
+- ✅ 列出三条准则
 
-### 2026-03-10 21:40
-- ✅ 完成所有主要页面重构
-- ✅ 代码量减少66%
-- ✅ 统一模块系统
+---
+
+## 🔄 每次执行流程
+
+**每次重构一个页面时**：
+1. 读取文件，确认当前状态
+2. 按照修改步骤重构
+3. 保存文件
+4. 读取确认修改正确
+5. 本地测试（如果可能）
+6. 更新此文档打勾
+7. 提交 Git
+8. 继续下一个
+
+**原则**：
+- 一次只改一个文件
+- 改完就读取确认
+- 确认无误再提交
+- 不急躁，保证质量
 
 ---
 
