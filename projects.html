@@ -15,6 +15,13 @@
       <p>我参与的开源项目和研究成果</p>
     </div>
 
+    <!-- 状态筛选 -->
+    <div class="card">
+      <button class="tag" onclick="filterByStatus('all')">全部</button>
+      <button class="tag" onclick="filterByStatus('进行中')">进行中</button>
+      <button class="tag" onclick="filterByStatus('已完成')">已完成</button>
+    </div>
+
     <div id="projects" class="grid"></div>
   </div>
 
@@ -27,9 +34,23 @@
 
     async function load() {
       const data = await loadData('data/projects.json');
-      document.getElementById('projects').innerHTML =
-        data.projects.map(renderProject).join('');
+      const projects = data.projects;
+      
+      window.renderProjects = (list) => {
+        document.getElementById('projects').innerHTML = list.map(renderProject).join('');
+      };
+      window.allProjects = projects;
+      renderProjects(projects);
     }
+    
+    window.filterByStatus = (status) => {
+      if (status === 'all') {
+        window.renderProjects(window.allProjects);
+      } else {
+        const filtered = window.allProjects.filter(p => p.status === status);
+        window.renderProjects(filtered);
+      }
+    };
 
     load();
   </script>
