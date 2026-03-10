@@ -96,6 +96,53 @@ nav .menu a:hover { color: var(--primary); }
 
 .btn:hover { opacity: 0.9; }
 
+/* 搜索框 */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 16px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* 链接 */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 活跃状态 */
+.menu .active {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav .menu a {
+    margin: 10px;
+    display: inline-block;
+  }
+}
+
 /* 页脚 */
 footer {
   text-align: center;
