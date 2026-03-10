@@ -1,0 +1,64 @@
+{
+  "papers": [
+    {
+      "id": "visual-storytelling-2025",
+      "title": "Visual Storytelling: A Survey of Methods and Applications",
+      "authors": ["Zhang Wei", "Li Ming", "Wang Chen"],
+      "venue": "CVPR 2025",
+      "year": 2025,
+      "abstract": "视觉叙事是计算机视觉和自然语言处理的交叉领域，本文系统综述了视觉叙事的方法和应用...",
+      "tags": ["计算机视觉", "自然语言处理", "视觉叙事"],
+      "pdf": "https://arxiv.org/pdf/example1.pdf",
+      "code": "https://github.com/example/visual-storytelling",
+      "date": "2025-12-15"
+    },
+    {
+      "id": "instruction-aware-2025",
+      "title": "Instruction-Aware Language Models",
+      "authors": ["Liu Yang", "Zhao Hong", "Chen Lin"],
+      "venue": "NeurIPS 2025",
+      "year": 2025,
+      "abstract": "本文提出指令感知语言模型，通过显式建模指令语义来提升模型遵循指令的能力...",
+      "tags": ["大语言模型", "指令遵循", "对齐"],
+      "pdf": "https://arxiv.org/pdf/example2.pdf",
+      "code": "https://github.com/example/instruction-aware",
+      "date": "2025-11-20"
+    },
+    {
+      "id": "lexsembridge-2025",
+      "title": "LexSemBridge: Bridging Lexical and Semantic Representations",
+      "authors": ["Wang Xiao", "Li Hua"],
+      "venue": "ACL 2025",
+      "year": 2025,
+      "abstract": "LexSemBridge是一个新的预训练任务，旨在桥接词汇和语义表示...",
+      "tags": ["预训练", "词嵌入", "语义表示"],
+      "pdf": "https://arxiv.org/pdf/example3.pdf",
+      "code": "https://github.com/example/lexsembridge",
+      "date": "2025-10-10"
+    },
+    {
+      "id": "irsc-2025",
+      "title": "Iterative Refinement for Self-Consistent Reasoning",
+      "authors": ["Zhang Qiang", "Wu Di", "Liu Fang"],
+      "venue": "ICML 2025",
+      "year": 2025,
+      "abstract": "本文提出迭代精炼方法，通过自我一致性推理提升大语言模型的推理能力...",
+      "tags": ["推理", "自我一致性", "大语言模型"],
+      "pdf": "https://arxiv.org/pdf/example4.pdf",
+      "code": "https://github.com/example/irsc",
+      "date": "2025-09-15"
+    },
+    {
+      "id": "cspc-2026",
+      "title": "Contrastive Self-Supervised Pre-training for Code",
+      "authors": ["Lin Hehei", "Zhang Yi"],
+      "venue": "ICSE 2026 (Submitted)",
+      "year": 2026,
+      "abstract": "本文提出对比自监督预训练方法，用于代码理解和生成任务...",
+      "tags": ["代码生成", "自监督学习", "预训练"],
+      "pdf": "https://arxiv.org/pdf/example5.pdf",
+      "code": "https://github.com/lingooker/cspc",
+      "date": "2026-01-20"
+    }
+  ]
+}

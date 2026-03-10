@@ -1,0 +1,11 @@
+{
+  "site": {
+    "title": "林嘿嘿的博客",
+    "subtitle": "清华大学 | 大模型研究",
+    "author": "林嘿嘿",
+    "email": "example@example.com",
+    "github": "https://github.com/lingooker",
+    "description": "记录学习、研究、思考",
+    "keywords": ["大模型", "深度学习", "AI研究"]
+  }
+}
