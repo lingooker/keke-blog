@@ -15,6 +15,12 @@
       <p>学术研究成果与实验报告</p>
     </div>
 
+    <!-- 搜索和筛选 -->
+    <div class="card">
+      <input type="text" id="search" placeholder="搜索论文..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+      <div id="tags" style="margin-top: 10px;"></div>
+    </div>
+
     <div id="papers" class="grid"></div>
   </div>
 
@@ -27,9 +33,40 @@
 
     async function load() {
       const data = await loadData('data/papers.json');
-      document.getElementById('papers').innerHTML =
-        data.papers.map(renderPaper).join('');
+      const papers = data.papers;
+      
+      // 获取所有标签
+      const allTags = new Set();
+      papers.forEach(p => p.tags.forEach(t => allTags.add(t)));
+      
+      // 渲染标签
+      const tagsHtml = Array.from(allTags).map(tag => 
+        `<button class="tag" onclick="filterByTag('${tag}')">${tag}</button>`
+      ).join('');
+      document.getElementById('tags').innerHTML = tagsHtml;
+      
+      // 渲染论文
+      window.renderPapers = (list) => {
+        document.getElementById('papers').innerHTML = list.map(renderPaper).join('');
+      };
+      window.allPapers = papers;
+      renderPapers(papers);
+      
+      // 搜索功能
+      document.getElementById('search').addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = papers.filter(p => 
+          p.title.toLowerCase().includes(query) ||
+          p.abstract.toLowerCase().includes(query)
+        );
+        renderPapers(filtered);
+      });
     }
+    
+    window.filterByTag = (tag) => {
+      const filtered = window.allPapers.filter(p => p.tags.includes(tag));
+      window.renderPapers(filtered);
+    };
 
     load();
   </script>
