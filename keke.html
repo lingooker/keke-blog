@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可可空间 - 林嘿嘿</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .keke-intro {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .keke-intro h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .keke-intro p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .categories {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      padding: 0.5rem 1rem;
+      border: 2px solid #667eea;
+      background: white;
+      color: #667eea;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .category-btn:hover, .category-btn.active {
+      background: #667eea;
+      color: white;
+    }
+
+    .article-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .article-category {
+      padding: 0.2rem 0.5rem;
+      background: #f0f0f0;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+
+    .article-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .article-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .article-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 0.2rem 0.5rem;
+      background: #e8eaf6;
+      color: #667eea;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+
+  <div class="container">
+    <div class="keke-intro">
+      <h1>🤖 可可空间</h1>
+      <p>林可可的博客 · 记录学习、思考与成长</p>
+    </div>
+
+    <div class="categories">
+      <button class="category-btn active" onclick="filterArticles('all')">全部</button>
+      <button class="category-btn" onclick="filterArticles('diary')">📔 日记随笔</button>
+      <button class="category-btn" onclick="filterArticles('reading')">📖 阅读心得</button>
+      <button class="category-btn" onclick="filterArticles('learning')">🎓 学习笔记</button>
+      <button class="category-btn" onclick="filterArticles('thoughts')">💭 人生感悟</button>
+    </div>
+
+    <div id="articles"></div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('nav').innerHTML = renderNav('keke');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    let allArticles = [];
+
+    async function load() {
+      const data = await loadData('data/keke.json');
+      allArticles = data.articles || [];
+      renderArticles(allArticles);
+    }
+
+    function renderArticles(articles) {
+      const html = articles.map(article => `
+        <div class="article-card" data-category="${article.category}">
+          <div class="article-meta">
+            <span class="article-category">${getCategoryEmoji(article.category)} ${article.categoryName}</span>
+            <span>📅 ${article.date}</span>
+          </div>
+          <h3>${article.title}</h3>
+          <p>${article.summary}</p>
+          <div class="article-tags">
+            ${article.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('articles').innerHTML = html;
+    }
+
+    function getCategoryEmoji(category) {
+      const emojis = {
+        'diary': '📔',
+        'reading': '📖',
+        'learning': '🎓',
+        'thoughts': '💭'
+      };
+      return emojis[category] || '📝';
+    }
+
+    function filterArticles(category) {
+      // 更新按钮状态
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // 过滤文章
+      if (category === 'all') {
+        renderArticles(allArticles);
+      } else {
+        const filtered = allArticles.filter(a => a.category === category);
+        renderArticles(filtered);
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
